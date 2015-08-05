@@ -18,27 +18,38 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  Exposé
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Any group of people looking to get to know each other.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Imagine it's a Saturday night and you're with a group of people, some are your friends, some you're meeting for the first time.
+  You want everyone to have a good time and get to know each other. So you decide to play Exposé. 
+  Exposé - Discover everything you wanted to know about other people, while they discover everything you didn't want them to know about you.
 
 ## Problem ##
   > Describe the problem your product solves.
+  Social awkwardness, breaking the ice.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  We get people to know each by answering hilarious personal questions about each other.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+    "Breaking the ice one question at a time"
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Go to the website, set up a game on the laptop, and have people join the game through their mobile devices with the code.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "I found out things about myself that I never even knew, and things about friends I wish I could forget."
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  Warning --- Only come if you want to have a good time.
