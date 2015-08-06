@@ -15,5 +15,9 @@
     "tests"
   ],
   "dependencies": {
+    "angular": "~1.4.3",
+    "firebase": "~2.2.9",
+    "angularfire": "~1.1.2",
+    "angular-ui-router": "~0.2.15"
   }
 }
