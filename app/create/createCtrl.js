@@ -5,18 +5,17 @@
 angular.module("App")
 .controller("createCtrl", ["$scope", "$state", "fireBaseFactory", function($scope, $state, fireBaseFactory){
 
-  console.log("fireBaseFactory", fireBaseFactory);
   var game = fireBaseFactory.getGame();
 
-  // get the game code to make sure it works
-  console.log("KEY", game.$id);
+  // display the code 
   $scope.code = game.$id;
 
-  // must get the number of players to display
+  // display the players from the database
   $scope.players = game.players;
 
   $scope.toQuestionDisplay = function(){
-    $state.go("question_display");
+    fireBaseFactory.setJoin(false, game.$id); // no more people can join the game
+    $state.go("question_display"); // navigate to the question display page
   };
 
 }]);
