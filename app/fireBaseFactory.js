@@ -30,6 +30,7 @@ angular.module("App")
   };
 
   var getGame = function() {
+    console.log("Game",game);
     return game;
   };
 
@@ -37,10 +38,16 @@ angular.module("App")
     return playerKey;
   };
 
+  var setJoin = function(canJoin, id){
+    var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
+    newRef.update({join: canJoin});
+  };
+
   return {
     createGame: createGame,
     joinGame: joinGame,
     getGame: getGame,
-    getPlayerKey: getPlayerKey
+    getPlayerKey: getPlayerKey,
+    setJoin: setJoin
   };
-})
+});

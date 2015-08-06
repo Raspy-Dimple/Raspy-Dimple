@@ -47,4 +47,4 @@ angular.module("App", ["ui.router", "firebase"])
       controller: "voting_playerCtrl"
     });
   $urlRouterProvider.otherwise("/");
-})
+});

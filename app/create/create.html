@@ -1,1 +1,10 @@
-<div>hi</div>
+<div ng-controller="createCtrl">
+  <h2>Join at {{code}}</h2>
+
+  <ul>
+    <li ng-repeat="player in players">
+      <span>{{player.name}}</span>
+    </li>
+  </ul>
+  <a ng-click="toQuestionDisplay">GO!</a>
+</div>
