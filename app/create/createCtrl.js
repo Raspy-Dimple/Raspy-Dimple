@@ -16,7 +16,6 @@ angular.module("App")
   $scope.players = game.players;
 
   $scope.toQuestionDisplay = function(){
-    game.
     $state.go("question_display");
   };
 
