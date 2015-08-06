@@ -3,10 +3,10 @@
 // Display all users current joined
 // Contains a go button that will navigate the user to the next page, and set the join flag to false
 angular.module("App")
-.controller("createCtrl", ["$scope", "$state", "firebaseFactory", function($scope, $state, firebaseFactory){
+.controller("createCtrl", ["$scope", "$state", "fireBaseFactory", function($scope, $state, fireBaseFactory){
 
   // get the game code to make sure it works
-  var game = firebaseFactory.getGame();
+  var game = fireBaseFactory.getGame();
   console.log(game);
   // $scope.code = game.key();
   $scope.code = "Test";
