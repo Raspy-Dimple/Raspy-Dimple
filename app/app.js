@@ -10,6 +10,6 @@ angular.module("App", ["ui.router", "firebase"])
       url: "/create",
       templateUrl: "/create/create.html",
       controller: "createCtrl"
-    })
+    });
   $urlRouterProvider.otherwise("/");
-})
+});

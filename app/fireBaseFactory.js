@@ -43,4 +43,4 @@ angular.module("App")
     getGame: getGame,
     getPlayerKey: getPlayerKey
   };
-})
+});
