@@ -5,19 +5,19 @@
 angular.module("App")
 .controller("createCtrl", ["$scope", "$state", "fireBaseFactory", function($scope, $state, fireBaseFactory){
 
-  // get the game code to make sure it works
+  console.log("fireBaseFactory", fireBaseFactory);
   var game = fireBaseFactory.getGame();
-  console.log(game);
-  // $scope.code = game.key();
-  $scope.code = "Test";
+
+  // get the game code to make sure it works
+  console.log("KEY", game.$id);
+  $scope.code = game.$id;
 
   // must get the number of players to display
   $scope.players = game.players;
 
   $scope.toQuestionDisplay = function(){
+    game.
     $state.go("question_display");
   };
-
-  console.log("working");
 
 }]);
