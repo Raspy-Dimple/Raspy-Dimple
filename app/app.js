@@ -5,6 +5,11 @@ angular.module("App", ["ui.router", "firebase"])
       url: "/",
       templateUrl: "/home/home.html",
       controller: "homeCtrl"
-    });
+    })
+    .state("create", {
+      url: "/create",
+      templateUrl: "/create/create.html",
+      controller: "createCtrl"
+    })
   $urlRouterProvider.otherwise("/");
 })
