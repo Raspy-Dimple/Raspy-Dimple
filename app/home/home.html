@@ -2,7 +2,7 @@
 
 <div>
 
-  <p><a ui-sref="create">create game</a></p>
+  <p><a ng-click="createGame()" href="">create game</a></p>
   <p><a ui-sref="join">join game</a></p>
 
 </div>
@@ -12,5 +12,3 @@
   {{ text | json }} <br> {{ join | json}}
 -->
 {{ text | json }} <br> {{ join | json}}
-<a ui-sref="create">create game</a>
-<a ng-click="routing()">join game</a>
