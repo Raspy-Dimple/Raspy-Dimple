@@ -24,13 +24,23 @@ angular.module("App")
     // });
     // hard code the game ref in url
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
-    var playerKey = newRef.child("players").push({name: name}).key();
+    playerKey = newRef.child("players").push({name: name}).key();
     game = $firebaseObject(newRef);
     return game;
+  };
+
+  var getGame = function() {
+    return game;
+  };
+
+  var getPlayerKey = function() {
+    return playerKey;
   };
 
   return {
     createGame: createGame,
     joinGame: joinGame,
+    getGame: getGame,
+    getPlayerKey: getPlayerKey
   };
 })
