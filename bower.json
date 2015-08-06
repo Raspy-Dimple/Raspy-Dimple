@@ -1,0 +1,19 @@
+{
+  "name": "ExposeGame",
+  "version": "0.0.1",
+  "homepage": "https://github.com/daveschumaker/Raspy-Dimple",
+  "authors": [
+    "Dave Schumaker <daveschumaker@gmail.com>"
+  ],
+  "description": "Multiplayer game for mobile devices.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
