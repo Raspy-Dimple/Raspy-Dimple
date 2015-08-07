@@ -2,11 +2,7 @@ angular.module('App')
   .controller('question_playerCtrl', function($scope, fireBaseFactory) {
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
-    var playerAnswer = null;
-    // var currentRound = game.currentRound;
     
-    // question_player will need to display the current question to the player
-    // $scope.question = game.questions[currentRound];
     game.$loaded()
       .then(function(data) {
         $scope.question = data.questions[data.currentRound];

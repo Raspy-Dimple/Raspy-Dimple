@@ -24,13 +24,8 @@ angular.module("App")
     game = $firebaseObject(ref.push(gameObject));
     return game;
   };
-  // var id = "-Jw3HM066k7KPSn1RgKN"
 
   var joinGame = function(id, name) {
-    // return ref.equalTo("Jw3HM066k7KPSn1RgKN").on("value", function(snapShot) {
-    //   console.log(snapShot.val());
-    // });
-    // hard code the game ref in url
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     playerKey = newRef.child("players").push({name: name}).key();
     game = $firebaseObject(newRef);
