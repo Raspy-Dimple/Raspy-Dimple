@@ -9,8 +9,16 @@ angular.module("App")
       join: true,
       currentRound: 1,
       questions: {
-        1: "question1",
-        2: "question2"
+        1: "What does JARVIS like to do on a Saturday night?",
+        2: "What is JARVIS's favorite type of food?",
+        3: "What is JARVIS's favorite animal?",
+        4: "What does JARVIS think about in the shower?",
+        5: "What is JARVIS's favorite song?",
+        6: "Why did JARVIS fail clown school?",
+        7: "What did JARVIS's parents say to them when they were born?",
+        8: "What was JARVIS doing last night?",
+        9: "This is JARVIS's favorite pickup line: _____________",
+        10: "What is JARVIS's super power?"
       }
     };
     game = $firebaseObject(ref.push(gameObject));
