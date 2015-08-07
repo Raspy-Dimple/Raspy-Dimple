@@ -1,22 +1,16 @@
 angular.module("App")
 .controller("question_displayCtrl", function($scope, $state, fireBaseFactory) {
+	
 	// get question from firebase to display question
-	// var game = fireBaseFactory.getGame();
-	// var questions = game.questions;
-	var timer = 30;
+	var game = fireBaseFactory.getGame();
+	// console.log("question display game",game)
 
-	setInterval(function() {
-		$scope.sec = timer;
-		timer--;
-	}, 1000);
+	game.$loaded().then(function(data) {
+		$scope.question = data.questions[data.currentRound];
+	});
 
-	var questions = {0: "question1", 1: "question2"};
+	$scope.toVotingDisplay = function() {
+		$state.go("voting_display");
+	};
 
-	var questionIndex = 0;
-	$scope.question = questions[questionIndex];
-	questionIndex++;
-
-
-
-	// countdown 30 sec
 })

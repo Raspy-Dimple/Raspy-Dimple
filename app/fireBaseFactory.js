@@ -43,11 +43,12 @@ angular.module("App")
     newRef.update({join: canJoin});
   };
 
+
   return {
     createGame: createGame,
     joinGame: joinGame,
     getGame: getGame,
     getPlayerKey: getPlayerKey,
-    setJoin: setJoin
+    setJoin: setJoin,
   };
 });
