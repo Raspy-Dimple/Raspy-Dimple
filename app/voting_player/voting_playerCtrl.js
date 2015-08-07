@@ -1,5 +1,5 @@
 angular.module('App')
-  .controller('voting_playerCtrl', function($scope, fireBaseFactory) {
+  .controller('voting_playerCtrl', function($scope, $state, fireBaseFactory) {
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
     
@@ -13,7 +13,7 @@ angular.module('App')
       console.log(playerKey);
       // increment the current answers vote count
       fireBaseFactory.incrementPlayerScore(playerKey);
-      // $state.go('voting_player');
+      $state.go('result_player');
     };
 
 

@@ -1,0 +1,14 @@
+<h1>VOTING RESULTS!</h1>
+
+<p>{{question}}</p>
+
+<p>RESULTS</p>
+
+<ul>
+  <li ng-repeat="answer in answers  | orderBy:'-votes'">
+    {{getPlayerName(answer.playerKey)}}: {{answer.response}} : {{answer.votes}} Votes
+  </li>
+</ul>
+
+<!-- Temporary Button to move us to the next round. -->
+<p><a ui-sref='question_player'>NEXT ROUND!</a></p>
