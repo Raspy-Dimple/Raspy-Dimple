@@ -18,4 +18,13 @@ angular.module('App')
       return playerList[playerKey].name;
     }
 
+    setInterval(function() {
+      game = fireBaseFactory.getGame();
+      game.$loaded()
+          .then(function(data) {
+            $scope.answers = data.answers;
+            $scope.$apply();
+          })
+      }, 2500);
+
   })
