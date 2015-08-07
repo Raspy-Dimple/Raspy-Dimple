@@ -11,7 +11,24 @@ angular.module("App")
   $scope.code = game.$id;
 
   // display the players from the database
-  $scope.players = game.players;
+  // Setup as an empty array, since we'll need to iterate over our game object.
+  $scope.players = [];
+
+  // Via Dave: Kind of a janky way to pull data and 
+  // update list of current players. 
+  // But let's try it anyway!
+  setInterval(function() {
+    game = fireBaseFactory.getGame();
+    for (var key in game.players) {
+      if ($scope.players.indexOf(game.players[key].name) === -1) {
+        $scope.players.push(game.players[key].name);
+      }
+      //console.log('NAME: ', game.players[key].name);
+      console.log('Players: ', $scope.players);
+    }
+
+    //$scope.players = game;
+  }, 2500);
 
   $scope.toQuestionDisplay = function(){
     fireBaseFactory.setJoin(false, game.$id); // no more people can join the game
