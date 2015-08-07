@@ -43,11 +43,22 @@ angular.module("App")
     newRef.update({join: canJoin});
   };
 
+  var setCurrentRound = function() {
+    game.currentRound++;
+  };
+
+  var getCurrentQuestion = function() {
+    var questionIndex = game.currentRound;
+    return game.$loaded().then().question[questionIndex];
+  }
+
   return {
     createGame: createGame,
     joinGame: joinGame,
     getGame: getGame,
     getPlayerKey: getPlayerKey,
-    setJoin: setJoin
+    setJoin: setJoin,
+    getCurrentRound: getCurrentRound,
+    getCurrentQuestion: getCurrentQuestion
   };
 });
