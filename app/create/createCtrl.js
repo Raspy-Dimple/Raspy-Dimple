@@ -29,7 +29,8 @@ angular.module("App")
   }, 2500);
 
   $scope.toQuestionDisplay = function(){
-    fireBaseFactory.setJoin(false, game.$id); // no more people can join the game
+    fireBaseFactory.setJoin(false, game.$id);// no more people can join the game
+    fireBaseFactory.addQuestions();
     $state.go("question_display"); // navigate to the question display page
   };
 
