@@ -5,10 +5,11 @@ angular.module("App")
 	var game = fireBaseFactory.getGame();
 	game.$loaded().then(function(data) {
 		$scope.question = data.questions[data.currentRound];
+    console.log($scope.question);
 	});
 
 	$scope.toVotingDisplay = function() {
 		$state.go("voting_display");
 	};
 
-})
+});
