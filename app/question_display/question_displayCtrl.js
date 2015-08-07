@@ -1,5 +1,5 @@
 angular.module("App")
-.controller("question_displayCtrl", function($scope, $state, fireBaseFactory) {
+.controller("question_displayCtrl", function($scope, $state, question, fireBaseFactory) {
 	
 	// get game from firebase to display question
 	var game = fireBaseFactory.getGame();
@@ -11,4 +11,4 @@ angular.module("App")
 		$state.go("voting_display");
 	};
 
-})
+});

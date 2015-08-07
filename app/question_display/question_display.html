@@ -1,7 +1,9 @@
 <div ng-controller="question_displayCtrl">
-	Question: {{ question }}
+
+  <div question></div>
 
 	
 	<timer interval="1000" autostart="true" countdown="100">{{countdown}}</timer>
+
 	<input type="submit" value="Next" ng-click="toVotingDisplay()">
 </div>
