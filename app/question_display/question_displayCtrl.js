@@ -3,13 +3,11 @@ angular.module("App")
 	
 	// get question from firebase to display question
 	var game = fireBaseFactory.getGame();
-	console.log("question display game",game)
+	// console.log("question display game",game)
 
 	game.$loaded().then(function(data) {
 		$scope.question = data.questions[data.currentRound];
-	})
-	// $scope.question = fireBaseFactory.getCurrentQuestion();
-	fireBaseFactory.setCurrentRound();
+	});
 
 	$scope.toVotingDisplay = function() {
 		$state.go("voting_display");
