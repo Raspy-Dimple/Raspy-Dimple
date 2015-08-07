@@ -23,11 +23,9 @@ angular.module("App")
       if ($scope.players.indexOf(game.players[key].name) === -1) {
         $scope.players.push(game.players[key].name);
       }
-      //console.log('NAME: ', game.players[key].name);
+      $scope.$apply();
       console.log('Players: ', $scope.players);
     }
-
-    //$scope.players = game;
   }, 2500);
 
   $scope.toQuestionDisplay = function(){

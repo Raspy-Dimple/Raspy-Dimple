@@ -4,7 +4,7 @@ angular.module("App")
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
   var playerKey = null;
-
+  // var gameId = null;  might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
   var createGame = function() {
     var gameObject = {
       join: true,
@@ -28,6 +28,7 @@ angular.module("App")
 
   var joinGame = function(id, name) {
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
+    // gameId = id; might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
     playerKey = newRef.child("players").push({name: name, votes: 0}).key();
     game = $firebaseObject(newRef);
     return game;
@@ -54,7 +55,7 @@ angular.module("App")
     });
     ref.child('players').child(playerKey).child('votes').transaction(function(currentVotes) {
       return ++currentVotes;
-    })
+    });
   };
 
   var incrementRound = function() {
@@ -63,6 +64,15 @@ angular.module("App")
       return ++currentRound;
     })
   };
+
+  // Might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
+  // var playerAdded = function(cb){
+  //   var playersRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + gameId + "/players");
+  //   playersRef.on('child_added', function(childSnapshot, prevChildKey) {
+  //     // code to handle new child.
+  //     cb(childSnapshot);
+  //   });
+  // };
 
 
   return {
