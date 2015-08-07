@@ -1,8 +1,12 @@
-<div ng-controller="result_display">
+<div ng-controller="result_displayCtrl">
 	Question: {{ question }}
 	<ul>
-		<li ng-repeat="player in players">
-			{{ player.name }}: {{ player.votes}}
+		<li ng-repeat="answer in answers">
+			{{ players[answer.playerKey].name }} 
+			<br>
+			Current Round Points: {{ answer.votes }}
+			<br>
+			Total Points: {{ players[answer.playerKey].votes }}
 		</li>
 	</ul>
 
