@@ -1,0 +1,10 @@
+<div ng-controller="question_displayCtrl">
+	Question:
+	<div >
+		{{ question }}
+	</div>
+	<br>
+	Remaining Time:
+	<timer interval="1000" countdown="100">{{countdown}}</timer>
+	<input type="submit" value="Next" ng-click="">
+</div>
