@@ -5,6 +5,8 @@ angular.module("App")
   var game = fireBaseFactory.getGame();
   game.$loaded().then(function(data) {
     $scope.question = data.questions[data.currentRound];
+    console.log("answers",data.answers);
+    $scope.answers = data.answers;
   });
 
   $scope.toResultDisplay = function() {

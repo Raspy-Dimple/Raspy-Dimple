@@ -2,5 +2,12 @@
   Question: {{ question }}
   
   <input type="submit" value="Next" ng-click="toResultDisplay()">
+  <ul>
+    <li ng-repeat="answer in answers">
+      {{answer.response}}
+    </li>
+  </ul>
+
+  <a ng-click="toResultDisplay()" href="#">GO!</a>
 
 </div>
