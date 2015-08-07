@@ -5,8 +5,10 @@
 <p>RESULTS</p>
 
 <ul>
-  Answer : Votes
   <li ng-repeat="answer in answers  | orderBy:'-votes'">
-    {{answer.response}} : {{answer.votes}}
+    {{getPlayerName(answer.playerKey)}}: {{answer.response}} : {{answer.votes}} Votes
   </li>
 </ul>
+
+<!-- Temporary Button to move us to the next round. -->
+<p><a ui-sref='question_player'>NEXT ROUND!</a></p>
