@@ -1,0 +1,10 @@
+<div ng-controller="result_display">
+	Question: {{ question }}
+	<ul>
+		<li ng-repeat="player in players">
+			{{ player.name }}: {{ player.votes}}
+		</li>
+	</ul>
+
+	<input type="submit" value="Next" ng-click="toNextDisplay()">
+</div>

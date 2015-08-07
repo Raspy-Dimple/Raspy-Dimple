@@ -32,7 +32,7 @@ angular.module("App")
     // });
     // hard code the game ref in url
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
-    playerKey = newRef.child("players").push({name: name}).key();
+    playerKey = newRef.child("players").push({name: name, votes: 0}).key();
     game = $firebaseObject(newRef);
     return game;
   };

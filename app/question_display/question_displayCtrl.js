@@ -1,10 +1,8 @@
 angular.module("App")
 .controller("question_displayCtrl", function($scope, $state, fireBaseFactory) {
 	
-	// get question from firebase to display question
+	// get game from firebase to display question
 	var game = fireBaseFactory.getGame();
-	// console.log("question display game",game)
-
 	game.$loaded().then(function(data) {
 		$scope.question = data.questions[data.currentRound];
 	});
