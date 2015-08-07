@@ -28,7 +28,7 @@ angular.module("App")
 
   var joinGame = function(id, name) {
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
-    gameId = id;
+    // gameId = id; might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
     playerKey = newRef.child("players").push({name: name, votes: 0}).key();
     game = $firebaseObject(newRef);
     return game;
@@ -47,7 +47,7 @@ angular.module("App")
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     newRef.update({join: canJoin});
   };
-  
+
   var incrementPlayerScore = function(playerKey) {
     var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
     ref.child('answers').child(playerKey).child('votes').transaction(function(currentVotes) {
@@ -55,7 +55,7 @@ angular.module("App")
     });
     ref.child('players').child(playerKey).child('votes').transaction(function(currentVotes) {
       return ++currentVotes;
-    })
+    });
   };
 
   var incrementRound = function() {
