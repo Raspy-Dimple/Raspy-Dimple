@@ -24,4 +24,4 @@ angular.module('App')
           })
       }, 2500);
 
-  })
+  });
