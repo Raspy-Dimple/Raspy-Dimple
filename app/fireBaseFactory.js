@@ -4,6 +4,7 @@ angular.module("App")
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
   var playerKey = null;
+
   var createGame = function() {
     var gameObject = {
       join: true,
@@ -46,6 +47,23 @@ angular.module("App")
     newRef.update({join: canJoin});
   };
 
+  var incrementPlayerScore = function(playerKey) {
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+    ref.child('answers').child(playerKey).child('votes').transaction(function(currentVotes) {
+      return ++currentVotes;
+    });
+    ref.child('players').child(playerKey).child('votes').transaction(function(currentVotes) {
+      return ++currentVotes;
+    })
+  };
+
+  var incrementRound = function() {
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+    ref.child('currentRound').transaction(function(currentRound) {
+      return ++currentRound;
+    })
+  };
+
 
   return {
     createGame: createGame,
@@ -53,5 +71,7 @@ angular.module("App")
     getGame: getGame,
     getPlayerKey: getPlayerKey,
     setJoin: setJoin,
+    incrementPlayerScore: incrementPlayerScore,
+    incrementRound: incrementRound
   };
 });
