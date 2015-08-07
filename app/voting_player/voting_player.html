@@ -1,0 +1,7 @@
+<p>{{question}}</p>
+
+<ul>
+  <li ng-repeat="answer in answers" ng-click="chooseAnswer(answer.playerKey)" >
+    {{answer.response}}
+  </li>
+</ul>
