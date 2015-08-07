@@ -16,5 +16,13 @@ angular.module('App')
       $state.go('result_player');
     };
 
+    setInterval(function() {
+      game = fireBaseFactory.getGame();
+      game.$loaded()
+          .then(function(data) {
+            $scope.answers = data.answers;
+            $scope.$apply();
+          })
+      }, 2500);
 
   })

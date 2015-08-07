@@ -20,5 +20,14 @@ angular.module("App")
 			$state.go("question_display");
 		}
 		$state.go("question_display");
-	} 
+	}
+
+  setInterval(function() {
+    game = fireBaseFactory.getGame();
+    game.$loaded()
+        .then(function(data) {
+          $scope.answers = data.answers;
+          $scope.$apply();
+        })
+    }, 2500);
 })

@@ -9,6 +9,15 @@ angular.module("App")
     $scope.answers = data.answers;
   });
 
+  setInterval(function() {
+    game = fireBaseFactory.getGame();
+    game.$loaded()
+        .then(function(data) {
+          $scope.answers = data.answers;
+          $scope.$apply();
+        })
+    }, 2500);
+
   $scope.toResultDisplay = function() {
     $state.go("result_display");
   };
