@@ -1,0 +1,12 @@
+<h1>VOTING RESULTS!</h1>
+
+<p>{{question}}</p>
+
+<p>RESULTS</p>
+
+<ul>
+  Answer : Votes
+  <li ng-repeat="answer in answers  | orderBy:'-votes'">
+    {{answer.response}} : {{answer.votes}}
+  </li>
+</ul>
