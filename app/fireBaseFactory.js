@@ -64,6 +64,78 @@ angular.module("App")
     })
   };
 
+  var addQuestions = function() {
+    var replaceName = function(string, replaceWith) {
+      // replace 'JARVIS' with player name
+      return string.replace('JARVIS', replaceWith);
+    };
+    var randomName = function(playersArray) {
+      var randomNum = Math.floor(Math.random() * (playersArray.length));
+      return playersArray[randomNum];
+    };
+    var shuffleQuestions = function(questionsArray) {
+      for(var i = 0; i < questionsArray.length; i++) {
+        var random = Math.floor(Math.random()*(questionsArray.length-i))+i;
+        var temp = questionsArray[i];
+        questionsArray[i] =  questionsArray[random];
+        questionsArray[random] = temp;        
+      }
+      return questionsArray;
+    };
+    // get access to the names for the current game
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/players');
+    ref.once('value', function(players) {
+      var tempPlayers = ['jeff','tim','kate'];
+      angular.forEach(players.val(), function(player) {
+        tempPlayers.push(player.name);
+      });
+      var ref = new Firebase('https://exposeyourself.firebaseio.com/questionDB');
+      ref.once('value', function(questions) {
+        var tempQuestions = [];
+        angular.forEach(questions.val(), function(question) {
+          tempQuestions.push(question.question);
+        });
+        console.log(tempQuestions);
+        console.log(tempPlayers);
+        // add ten random questions and add a random name to each one where 'JARVIS' is located
+        var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+        var counter = 1;
+
+        var tempQuestions = shuffleQuestions(tempQuestions).slice(0,10);
+
+        angular.forEach(tempQuestions, function(question) {
+          if(counter < 10) {
+            var tempQues = {};
+            tempQues[counter] = replaceName(question, randomName(tempPlayers));
+            ref.child('questions').update(tempQues);
+            counter++;
+          }
+        });
+
+      });
+    });
+  };
+
+  // How to add questions from Google Sheet:
+    // Step 1: use the 'toJSON' extension in our GoogleSheet to convert all the questions
+    //         to JSON format.
+    // Step 2: uncomment the code below
+    // Step 3: copy the data from the results of the previous step and paste 
+    //         the JSON data as the value of the 'QUESTIONS' variable below
+    // Step 4: Enjoy the rest of your day. You're questions are added
+
+
+  // var QUESTIONS = "ADD THE JSON DATA HERE";
+  // var pushToFirebase = function(array) {
+  //     var ref = new Firebase('https://exposeyourself.firebaseio.com/');
+  //     for(var i = 0; i < array.length; i++) {
+  //         ref.child('questionDB').push(array[i]);
+  //     }
+  // };
+  // pushToFirebase(QUESTIONS);
+
+
+
 
   return {
     createGame: createGame,
@@ -72,6 +144,7 @@ angular.module("App")
     getPlayerKey: getPlayerKey,
     setJoin: setJoin,
     incrementPlayerScore: incrementPlayerScore,
-    incrementRound: incrementRound
+    incrementRound: incrementRound,
+    addQuestions: addQuestions
   };
 });
