@@ -28,7 +28,7 @@ angular.module("App")
   // 
   // Once this is done, we redirect player to the question page, using $state.
   $scope.go = function() {
-    console.log($scope.join.code + ' & ' + $scope.join.name);
+    // console.log($scope.join.code + ' & ' + $scope.join.name);
     fireBaseFactory.joinGame($scope.join.code, $scope.join.name);
     $state.go('question_player'); 
   }

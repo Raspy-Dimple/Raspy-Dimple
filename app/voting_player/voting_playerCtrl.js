@@ -10,7 +10,6 @@ angular.module('App')
       });
 
     $scope.chooseAnswer = function(playerKey) {
-      console.log(playerKey);
       // increment the current answers vote count
       fireBaseFactory.incrementPlayerScore(playerKey);
       $state.go('result_player');
@@ -25,4 +24,4 @@ angular.module('App')
           })
       }, 2500);
 
-  })
+  });
