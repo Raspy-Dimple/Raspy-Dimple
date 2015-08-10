@@ -104,6 +104,11 @@ angular.module("App")
     return $firebaseArray(ref.child('players'));
   };
 
+  var getPlayerAnswers = function() {
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+    return $firebaseArray(ref.child('answers'));
+  };
+
   var getTimeLeft = function() {
     var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
     return $firebaseObject(ref.child('timeLeft'));
@@ -191,16 +196,17 @@ angular.module("App")
   // pushToFirebase(QUESTIONS);
 
   return {
+    addQuestions: addQuestions,
     createGame: createGame,
-    joinGame: joinGame,
+    clearAnswers: clearAnswers,
     getGame: getGame,
     getPlayerKey: getPlayerKey,
-    setJoin: setJoin,
+    getPlayerAnswers: getPlayerAnswers,
+    getPlayerNames: getPlayerNames,
+    getTimeLeft: getTimeLeft,
     incrementPlayerScore: incrementPlayerScore,
     incrementRound: incrementRound,
-    addQuestions: addQuestions,
-    clearAnswers: clearAnswers,
-    getPlayerNames: getPlayerNames,
-    getTimeLeft: getTimeLeft
+    joinGame: joinGame,
+    setJoin: setJoin  
   };
 });
