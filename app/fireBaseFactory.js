@@ -1,5 +1,5 @@
 angular.module("App")
-.factory("fireBaseFactory", function($firebaseObject) {
+.factory("fireBaseFactory", function($firebaseObject, $firebaseArray) {
   
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
@@ -63,6 +63,11 @@ angular.module("App")
     ref.child('currentRound').transaction(function(currentRound) {
       return ++currentRound;
     })
+  };
+
+  var getPlayerNames = function() {
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+    return $firebaseArray(ref.child('players'));
   };
 
   // Might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
@@ -152,6 +157,7 @@ angular.module("App")
     setJoin: setJoin,
     incrementPlayerScore: incrementPlayerScore,
     incrementRound: incrementRound,
-    addQuestions: addQuestions
+    addQuestions: addQuestions,
+    getPlayerNames: getPlayerNames
   };
 });
