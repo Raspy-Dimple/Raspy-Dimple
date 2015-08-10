@@ -5,6 +5,20 @@ angular.module("App")
   var game = null;
   var playerKey = null;
   // var gameId = null;  might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
+  
+  // Generate a random string of 5 characters that we will use for our game ID's.
+   var createGameID = function () {
+      var gameID = '';
+      var validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+      for(var i = 0; i < 6; i++) {
+        gameID += validChars.charAt(Math.floor(Math.random() * validChars.length));
+      }
+
+      //console.log(gameID);
+      return gameID;
+  }
+
   var createGame = function() {
     var gameObject = {
       join: true,
@@ -22,11 +36,25 @@ angular.module("App")
         10: "What is JARVIS's super power?"
       }
     };
-    game = $firebaseObject(ref.push(gameObject));
+    //game = $firebaseObject(ref.push(gameObject));
+    var gameID = createGameID();
+    console.log('Game ID: ', gameID);
+
+    // Instantiate a new game with our newly generated short code ID.
+    // Note: If we don't utilize a short code, and instead use the FireBase "push" method,
+    // we end up with really long and unwieldy IDs that users will never type in.
+    ref.child(gameID).set(gameObject);
+
+    // Once we've instantiated the game, let's get the object back so we can utilize it.
+    var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + gameID);
+    game = $firebaseObject(newRef);
     return game;
   };
 
   var joinGame = function(id, name) {
+    // Convert our ID to Upper Case since that's what's created by our short code generator.
+    var id = id.toUpperCase(); 
+    
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     // gameId = id; might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
     playerKey = newRef.child("players").push({name: name, votes: 0}).key();
