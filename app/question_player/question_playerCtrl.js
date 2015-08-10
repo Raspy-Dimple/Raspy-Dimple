@@ -15,9 +15,6 @@ angular.module('App')
         //     $scope.submitPlayerAnswer();
         //   }
         });
-      });
-
-
 
     $scope.submitPlayerAnswer = function(answer) {
       console.log(answer);
