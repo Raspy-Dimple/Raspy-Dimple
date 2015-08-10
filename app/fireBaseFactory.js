@@ -9,6 +9,7 @@ angular.module("App")
     var gameObject = {
       join: true,
       currentRound: 1,
+      timeLeft: 10,
       questions: {
         1: "What does JARVIS like to do on a Saturday night?",
         2: "What is JARVIS's favorite type of food?",
@@ -73,6 +74,11 @@ angular.module("App")
   var getPlayerNames = function() {
     var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
     return $firebaseArray(ref.child('players'));
+  };
+
+  var getTimeLeft = function() {
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+    return $firebaseObject(ref.child('timeLeft'));
   };
 
   // Might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
@@ -166,6 +172,7 @@ angular.module("App")
     incrementRound: incrementRound,
     addQuestions: addQuestions,
     clearAnswers: clearAnswers,
-    getPlayerNames: getPlayerNames
+    getPlayerNames: getPlayerNames,
+    getTimeLeft: getTimeLeft
   };
 });
