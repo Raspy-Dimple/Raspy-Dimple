@@ -17,7 +17,7 @@ angular.module("App")
 
       //console.log(gameID);
       return gameID;
-  }
+  };
 
   var createGame = function() {
     var gameObject = {

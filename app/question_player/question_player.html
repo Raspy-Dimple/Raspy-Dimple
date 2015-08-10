@@ -1,6 +1,6 @@
 <p>Current Round: {{ currentRound }}</p>
 <p>{{question}}</p>
-<p>{{timeLeft.$value}}</p>
+<p>{{timeLeft.$value-2}}</p>
 <form ng-submit="submitPlayerAnswer(answer)">
   <input ng-model="answer" type="textarea"/>
   <button type='submit'>Submit</button>
