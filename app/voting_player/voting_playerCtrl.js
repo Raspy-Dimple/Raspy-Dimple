@@ -2,12 +2,13 @@ angular.module('App')
   .controller('voting_playerCtrl', function($scope, $state, fireBaseFactory) {
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
+    $scope.answers = fireBaseFactory.getPlayerAnswers();
     
     game.$loaded()
       .then(function(data) {
         $scope.question = data.questions[data.currentRound];
         $scope.currentRound = data.currentRound;
-        $scope.answers = data.answers;
+        // $scope.answers = fireBaseFactory.getPlayerAnswers();
       });
 
     $scope.chooseAnswer = function(playerKey) {
@@ -15,14 +16,4 @@ angular.module('App')
       fireBaseFactory.incrementPlayerScore(playerKey);
       $state.go('result_player');
     };
-
-    setInterval(function() {
-      game = fireBaseFactory.getGame();
-      game.$loaded()
-          .then(function(data) {
-            $scope.answers = data.answers;
-            $scope.$apply();
-          })
-      }, 2500);
-
   });

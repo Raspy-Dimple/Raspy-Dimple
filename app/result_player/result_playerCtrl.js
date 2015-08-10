@@ -3,11 +3,11 @@ angular.module('App')
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
     var playerList = {}; // Store our player list.
+    $scope.answers = fireBaseFactory.getPlayerAnswers();
     
     game.$loaded()
       .then(function(data) {
         $scope.question = data.questions[data.currentRound];
-        $scope.answers = data.answers;
         // get current round
         $scope.currentRound = data.currentRound;
         //$scope.playerNames = data.players.
@@ -19,14 +19,4 @@ angular.module('App')
       console.log('Player Key Object: ', playerList[playerKey]);
       return playerList[playerKey].name;
     }
-
-    setInterval(function() {
-      game = fireBaseFactory.getGame();
-      game.$loaded()
-          .then(function(data) {
-            $scope.answers = data.answers;
-            $scope.$apply();
-          })
-      }, 2500);
-
   })
