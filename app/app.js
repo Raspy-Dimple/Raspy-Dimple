@@ -45,6 +45,16 @@ angular.module("App", ["ui.router", "firebase"])
       url: "/voting_player",
       templateUrl: "/voting_player/voting_player.html",
       controller: "voting_playerCtrl"
+    })
+    .state("final_result_display", {
+      url: "/final_result_display",
+      templateUrl: "/final_result_display/final_result_display.html",
+      controller: "final_result_displayCtrl"
+    })
+    .state("final_result_player", {
+      url: "/final_result_player",
+      templateUrl: "/final_result_player.html",
+      controller: "final_result_playerCtrl"
     });
   $urlRouterProvider.otherwise("/");
 });

@@ -1,0 +1,9 @@
+<div ng-controller="final_result_displayCtrl">
+<p>Final Result</p>
+<ul>
+	<li ng-repeat="player in players | orderBy:'votes'">
+		{{ player.name }} : {{ player.votes }}
+	</li>
+</ul>
+<input type="submit" value="Play Another Round!" ng-click="toHome()">
+</div>
