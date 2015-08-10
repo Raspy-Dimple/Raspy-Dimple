@@ -1,9 +1,10 @@
 angular.module("App")
 .controller("result_displayCtrl", function($scope, $state, fireBaseFactory) {
 
+  $scope.answers = fireBaseFactory.getPlayerAnswers();
+
 	var game = fireBaseFactory.getGame();
 	game.$loaded().then(function(data) {
-		$scope.answers = data.answers;
 		$scope.currentRound = data.currentRound;
 		$scope.question = data.questions[data.currentRound];
 		$scope.players = data.players;
@@ -21,13 +22,4 @@ angular.module("App")
 		}
 		// $state.go("question_display");
 	}
-
-  setInterval(function() {
-    game = fireBaseFactory.getGame();
-    game.$loaded()
-        .then(function(data) {
-          $scope.answers = data.answers;
-          $scope.$apply();
-        })
-    }, 2500);
 })
