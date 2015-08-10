@@ -65,6 +65,11 @@ angular.module("App")
     })
   };
 
+  var clearAnswers = function() {
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+    ref.child('answers').remove();
+  };
+
   // Might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
   // var playerAdded = function(cb){
   //   var playersRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + gameId + "/players");
@@ -126,6 +131,8 @@ angular.module("App")
     });
   };
 
+
+
   // How to add questions from Google Sheet:
     // Step 1: use the 'toJSON' extension in our GoogleSheet to convert all the questions
     //         to JSON format.
@@ -152,6 +159,7 @@ angular.module("App")
     setJoin: setJoin,
     incrementPlayerScore: incrementPlayerScore,
     incrementRound: incrementRound,
-    addQuestions: addQuestions
+    addQuestions: addQuestions,
+    clearAnswers: clearAnswers
   };
 });
