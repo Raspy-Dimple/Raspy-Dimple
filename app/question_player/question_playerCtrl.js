@@ -9,11 +9,11 @@ angular.module('App')
         // get current round
         $scope.currentRound = data.currentRound;
         $scope.timeLeft = fireBaseFactory.getTimeLeft();
-        $scope.$watch('timeLeft', function(newVal, oldVal) {
-          console.log(newVal.$value);
-          if(newVal === 1) {
-            $scope.submitPlayerAnswer();
-          }
+        // $scope.$watch('timeLeft', function(newVal, oldVal) {
+        //   consolhe.log(newVal.$value);
+        //   if(newVal === 1) {
+        //     $scope.submitPlayerAnswer();
+        //   }
         });
       });
 
