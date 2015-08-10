@@ -26,20 +26,15 @@ angular.module('App')
 
 
     $scope.submitPlayerAnswer = function(answer) {
-      console.log(answer);
-      console.log(game);
       var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
-      console.log("before updating to have answers section");
-      console.log("playerKey", playerKey);
-      console.log("response", answer);
-      if (answer !== undefined){
+      if ($scope.answer !== undefined){
+        answer = $scope.answer;
         ref.child('answers').child(playerKey).update({
           playerKey: playerKey,
           response: answer,
           votes: 0
         });
       }
-      console.log("in submitPlayerAnswer");
       $state.go('voting_player');
     };
   });
