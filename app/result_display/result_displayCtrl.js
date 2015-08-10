@@ -17,6 +17,7 @@ angular.module("App")
 			// have not decided on the win/lose page
 		} else { // else display_question
 			fireBaseFactory.incrementRound();
+			fireBaseFactory.clearAnswers();
 			$state.go("question_display");
 		}
 		$state.go("question_display");
