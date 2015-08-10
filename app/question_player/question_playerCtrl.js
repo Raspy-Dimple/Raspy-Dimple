@@ -6,6 +6,8 @@ angular.module('App')
     game.$loaded()
       .then(function(data) {
         $scope.question = data.questions[data.currentRound];
+        // get current round
+        $scope.currentRound = data.currentRound;
       });
 
     $scope.submitPlayerAnswer = function(answer) {

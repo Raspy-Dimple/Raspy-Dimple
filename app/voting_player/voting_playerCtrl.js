@@ -6,6 +6,7 @@ angular.module('App')
     game.$loaded()
       .then(function(data) {
         $scope.question = data.questions[data.currentRound];
+        $scope.currentRound = data.currentRound;
         $scope.answers = data.answers;
       });
 
