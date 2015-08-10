@@ -3,6 +3,7 @@ angular.module("App")
   
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
+  var player = null;
   var playerKey = null;
   // var gameId = null;  might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
   
@@ -39,7 +40,7 @@ angular.module("App")
     };
     //game = $firebaseObject(ref.push(gameObject));
     var gameID = createGameID();
-    console.log('Game ID: ', gameID);
+    // console.log('Game ID: ', gameID);
 
     // Instantiate a new game with our newly generated short code ID.
     // Note: If we don't utilize a short code, and instead use the FireBase "push" method,
@@ -56,7 +57,9 @@ angular.module("App")
     // Convert our ID to Upper Case since that's what's created by our short code generator.
     var id = id.toUpperCase(); 
     
+    player = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
+    player = newRef;
     // gameId = id; might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
     playerKey = newRef.child("players").push({name: name, votes: 0}).key();
     game = $firebaseObject(newRef);
@@ -64,12 +67,15 @@ angular.module("App")
   };
 
   var getGame = function() {
-    //console.log("Game",game);
     return game;
   };
 
   var getPlayerKey = function() {
     return playerKey;
+  };
+
+  var getPlayer = function() {
+    return player;
   };
 
   var setJoin = function(canJoin, id){
@@ -154,8 +160,8 @@ angular.module("App")
         angular.forEach(questions.val(), function(question) {
           tempQuestions.push(question.question);
         });
-        console.log(tempQuestions);
-        console.log(tempPlayers);
+        // console.log(tempQuestions);
+        // console.log(tempPlayers);
         // add ten random questions and add a random name to each one where 'JARVIS' is located
         var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
         var counter = 1;
@@ -200,6 +206,7 @@ angular.module("App")
     createGame: createGame,
     clearAnswers: clearAnswers,
     getGame: getGame,
+    getPlayer: getPlayer,
     getPlayerKey: getPlayerKey,
     getPlayerAnswers: getPlayerAnswers,
     getPlayerNames: getPlayerNames,
@@ -207,6 +214,6 @@ angular.module("App")
     incrementPlayerScore: incrementPlayerScore,
     incrementRound: incrementRound,
     joinGame: joinGame,
-    setJoin: setJoin  
+    setJoin: setJoin
   };
 });

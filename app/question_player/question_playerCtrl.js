@@ -10,6 +10,7 @@ angular.module('App')
         $scope.question = data.questions[data.currentRound];
         // get current round
         $scope.currentRound = data.currentRound;
+
         $scope.timeLeft = fireBaseFactory.getTimeLeft();
       });
 
@@ -20,9 +21,6 @@ angular.module('App')
         $scope.submitPlayerAnswer();
       }
     });
-
-
-
 
 
     $scope.submitPlayerAnswer = function(answer) {
