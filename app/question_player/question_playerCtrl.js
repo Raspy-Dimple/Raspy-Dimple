@@ -8,7 +8,16 @@ angular.module('App')
         $scope.question = data.questions[data.currentRound];
         // get current round
         $scope.currentRound = data.currentRound;
+        $scope.timeLeft = fireBaseFactory.getTimeLeft();
+        $scope.$watch('timeLeft', function(newVal, oldVal) {
+          console.log(newVal.$value);
+          if(newVal === 1) {
+            $scope.submitPlayerAnswer();
+          }
+        });
       });
+
+
 
     $scope.submitPlayerAnswer = function(answer) {
       console.log(answer);
