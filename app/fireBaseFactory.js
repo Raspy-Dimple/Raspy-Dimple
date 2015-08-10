@@ -64,7 +64,7 @@ angular.module("App")
   };
 
   var getGame = function() {
-    console.log("Game",game);
+    //console.log("Game",game);
     return game;
   };
 
