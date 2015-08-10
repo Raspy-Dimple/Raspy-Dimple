@@ -8,6 +8,8 @@ angular.module('App')
       .then(function(data) {
         $scope.question = data.questions[data.currentRound];
         $scope.answers = data.answers;
+        // get current round
+        $scope.currentRound = data.currentRound;
         //$scope.playerNames = data.players.
         console.log('DATA.PLAYERS ', data.players);
         playerList = data.players;
