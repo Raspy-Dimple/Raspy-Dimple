@@ -16,11 +16,12 @@
  */
 
 angular.module("App")
-.controller("joinCtrl", function($scope, $state, fireBaseFactory){
+.controller("joinCtrl", function($scope, $state, $interval, fireBaseFactory){
   // This object will hold two models that are associated with the join.html page.
   // $scope.join.code = the game code that the player wants to join.
   // $scope.join.name = the player's name.
   $scope.join = {};
+  $scope.activeGame = true; // Intial base condition, set to true.
 
   // This function is called when the "GO!" button is clicked in the join view.
   // First, we call the joinGame() method from the fireBaseFactory and pass
@@ -30,7 +31,16 @@ angular.module("App")
   $scope.go = function() {
     // console.log($scope.join.code + ' & ' + $scope.join.name);
     fireBaseFactory.joinGame($scope.join.code, $scope.join.name);
-    $state.go('question_player'); 
-  }
 
+    // Setting up an interval to poll Firebase and see if the game is ready to start yet.
+    // Store interval promise so that we can destroy it once we're done.
+    var intJoinPromise = $interval(function() {
+      $scope.activeGame = fireBaseFactory.checkActive($scope.join.code);
+      if ($scope.activeGame){
+        //console.log('Yaaaay');
+        $interval.cancel(intJoinPromise); // Destroy our interval, now that we no longer need it.
+        $state.go('question_player');
+      }
+    },500,0);
+  }
 });

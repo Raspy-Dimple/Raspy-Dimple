@@ -22,6 +22,7 @@ angular.module("App")
   var createGame = function() {
     var gameObject = {
       join: true,
+      active: false,
       currentRound: 1,
       timeLeft: 10,
       questions: {
@@ -63,6 +64,23 @@ angular.module("App")
     return game;
   };
 
+  // Check if the HOST has put the game into an active state.
+  // If not, force the player / client to wait on their current screen.
+  var checkActive = function(id) {
+    var id = id.toUpperCase();
+    var activeGame;
+
+    // Query our current game ID to find out if the game is in an active state.
+    // This query method can be found here: https://www.firebase.com/blog/2013-10-01-queries-part-one.html#byid
+    new Firebase("https://exposeyourself.firebaseio.com/games/" + id + "/active").once('value', function(data) {
+      console.log('DATA', data.val());
+      activeGame = data.val();
+    });
+
+    // Return the state of our game to the controller.
+    return activeGame;
+  }
+
   var getGame = function() {
     //console.log("Game",game);
     return game;
@@ -72,9 +90,13 @@ angular.module("App")
     return playerKey;
   };
 
+  // This function does 2 things:
+  // 1. Sets our join condition so no more players can join the game.
+  // 2. Sets the active state of the game so that we can now push players into the questions.
   var setJoin = function(canJoin, id){
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     newRef.update({join: canJoin});
+    newRef.update({active: true});
   };
 
   var incrementPlayerScore = function(playerKey) {
@@ -197,6 +219,7 @@ angular.module("App")
 
   return {
     addQuestions: addQuestions,
+    checkActive: checkActive,
     createGame: createGame,
     clearAnswers: clearAnswers,
     getGame: getGame,
