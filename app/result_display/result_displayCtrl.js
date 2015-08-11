@@ -18,6 +18,7 @@ angular.module("App")
 		} else { // else display_question
 			fireBaseFactory.incrementRound();
 			fireBaseFactory.clearAnswers();
+			fireBaseFactory.updateCurrentView('question');
 			$state.go("question_display");
 		}
 		// $state.go("question_display");
