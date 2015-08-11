@@ -20,6 +20,7 @@ angular.module("App")
     }, 2500);
 
   $scope.toResultDisplay = function() {
+    fireBaseFactory.updateCurrentView('results');
     $state.go("result_display");
   };
 
