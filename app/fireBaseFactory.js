@@ -67,6 +67,7 @@ angular.module("App")
   // Check if the HOST has put the game into an active state.
   // If not, force the player / client to wait on their current screen.
   var checkActive = function(id) {
+    if (id === undefined) { return; } // Prevent errors if ID is null.
     var id = id.toUpperCase();
     var activeGame;
 
@@ -145,7 +146,7 @@ angular.module("App")
   //   });
   // };
 
-  var addQuestions = function() {
+  var addQuestions = function(callback) {
     var replaceName = function(string, replaceWith) {
       // replace 'JARVIS' with player name
       return string.replace('JARVIS', replaceWith);
@@ -176,13 +177,22 @@ angular.module("App")
         angular.forEach(questions.val(), function(question) {
           tempQuestions.push(question.question);
         });
-        console.log(tempQuestions);
-        console.log(tempPlayers);
+        //console.log(tempQuestions);
+        //console.log(tempPlayers);
         // add ten random questions and add a random name to each one where 'JARVIS' is located
         var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
         var counter = 1;
 
         var tempQuestions = shuffleQuestions(tempQuestions).slice(0,10);
+
+        // This checks if we've added all 10 questions to the game object
+        // in the Firebase database first. If so, then we call our callback function
+        // which will pass both host and player into the game with the correct questions.
+        var checkCallback = function() {
+          if (counter === 10) {
+            callback();
+          }
+        }
 
         angular.forEach(tempQuestions, function(question) {
           if(counter < 10) {
@@ -191,8 +201,8 @@ angular.module("App")
             ref.child('questions').update(tempQues);
             counter++;
           }
+          checkCallback(); // Trying to invoke a callback function here...    
         });
-
       });
     });
   };
