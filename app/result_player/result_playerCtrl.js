@@ -4,11 +4,6 @@ angular.module('App')
     var playerKey = fireBaseFactory.getPlayerKey();
     var playerList = {}; // Store our player list.
     $scope.answers = fireBaseFactory.getPlayerAnswers();
-
-    // This freezes the player on their current view
-    // after they've submitted their answer.
-    // Changes to true on submit and display a
-    // "WAITING FOR OTHER PLAYERS TO VOTE" div.
     
     game.$loaded()
       .then(function(data) {
