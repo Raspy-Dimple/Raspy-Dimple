@@ -10,9 +10,8 @@ angular.module('App')
         // maybe remove it
         $scope.question = data.questions[data.currentRound];
         $scope.currentRound = data.currentRound;
-        console.log("Answers",data.answers);
         $scope.answers = data.answers;
-        $scope.answers = removePlayerAnswer(data.answers);
+        // $scope.answers = removePlayerAnswer(data.answers);
       });
 
     $scope.chooseAnswer = function(playerKey) {
@@ -21,13 +20,15 @@ angular.module('App')
       $state.go('result_player');
     };
 
-    var removePlayerAnswer = function(answers){
-      var newAnswers = [];
-      for (answer in answers){
-        if (answer[playerKey] !== playerKey){
-          newAnswers.push(answer);
-        }
-      }
-      return newAnswers;
-    };
+    // var removePlayerAnswer = function(answers){
+    //   var newAnswers = [];
+    //   console.log("removePlayer",answers);
+    //   for (var key in answers){
+    //     if (key !== playerKey){
+    //       newAnswers.push(answers[key]);
+    //     }
+    //   }
+    //   return newAnswers;
+    // };
+
   });
