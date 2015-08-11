@@ -1,7 +1,15 @@
-<p>Current Round: {{ currentRound }}</p>
-<p>{{question}}</p>
-<p>{{timeLeft.$value-2}}</p>
-<form ng-submit="submitPlayerAnswer(answer)">
-  <input ng-model="answer" type="textarea"/>
-  <button type='submit'>Submit</button>
-</form>
+<div id="question-player-view">
+  <div ng-show="!holdView">
+    <p>Current Round: {{ currentRound }}</p>
+    <p>{{question}}</p>
+    <p>{{timeLeft.$value-2}}</p>
+    <form ng-submit="submitPlayerAnswer(answer)">
+      <input ng-model="answer" type="textarea"/>
+      <button type='submit'>Submit</button>
+    </form>
+  </div>
+
+  <div ng-show="holdView">
+    Waiting for other players to vote . . .
+  </div>
+</div>
