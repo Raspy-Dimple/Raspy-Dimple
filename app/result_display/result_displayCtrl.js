@@ -21,6 +21,5 @@ angular.module("App")
 			fireBaseFactory.updateCurrentView('question');
 			$state.go("question_display");
 		}
-		// $state.go("question_display");
 	}
 })

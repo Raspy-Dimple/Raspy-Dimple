@@ -1,4 +1,5 @@
 angular.module('App')
+
   .controller('result_playerCtrl', function($scope, $state, $interval, fireBaseFactory) {
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
@@ -18,7 +19,16 @@ angular.module('App')
     $scope.getPlayerName = function(playerKey) {
       console.log('Player Key Object: ', playerList[playerKey]);
       return playerList[playerKey].name;
-    }
+    };
+
+    // navigate to new question or to final result
+    $scope.toNextDisplay = function() {
+      if ($scope.currentRound >= 10) {
+        $state.go('final_result_player');
+      } else {
+        $state.go('question_player')
+      }
+    };
 
     // Setting up an interval to poll Firebase and see if
     // we can automatically change views yet.

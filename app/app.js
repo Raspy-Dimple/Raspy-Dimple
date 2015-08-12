@@ -53,7 +53,7 @@ angular.module("App", ["ui.router", "firebase"])
     })
     .state("final_result_player", {
       url: "/final_result_player",
-      templateUrl: "/final_result_player.html",
+      templateUrl: "/final_result_player/final_result_player.html",
       controller: "final_result_playerCtrl"
     });
   $urlRouterProvider.otherwise("/");
