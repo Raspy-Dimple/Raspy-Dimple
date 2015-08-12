@@ -8,7 +8,7 @@ angular.module("App")
   var game = fireBaseFactory.getGame();
   // display the code 
   $scope.code = game.$id;
-
+  
   // display the players from the database
   // Setup as an empty array, since we'll need to iterate over our game object.
   $scope.players = fireBaseFactory.getPlayerNames();

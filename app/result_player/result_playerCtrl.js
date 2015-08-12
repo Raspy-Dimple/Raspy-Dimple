@@ -5,7 +5,7 @@ angular.module('App')
     var playerKey = fireBaseFactory.getPlayerKey();
     var playerList = {}; // Store our player list.
     $scope.answers = fireBaseFactory.getPlayerAnswers();
-    
+
     game.$loaded()
       .then(function(data) {
         $scope.question = data.questions[data.currentRound];
@@ -17,7 +17,6 @@ angular.module('App')
       });
 
     $scope.getPlayerName = function(playerKey) {
-      console.log('Player Key Object: ', playerList[playerKey]);
       return playerList[playerKey].name;
     };
 
@@ -26,7 +25,7 @@ angular.module('App')
       if ($scope.currentRound >= 10) {
         $state.go('final_result_player');
       } else {
-        $state.go('question_player')
+        $state.go('question_player');
       }
     };
 
@@ -42,4 +41,4 @@ angular.module('App')
       }
     },500,0);
 
-  })
+  });

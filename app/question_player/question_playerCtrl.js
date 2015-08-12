@@ -25,7 +25,6 @@ angular.module('App')
       }
     });
 
-
     $scope.submitPlayerAnswer = function(answer) {
       $scope.holdView = true;
       

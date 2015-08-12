@@ -7,7 +7,7 @@
 <p>RESULTS</p>
 
 <ul>
-  <li ng-repeat="answer in answers  | orderBy:'-votes'">
+  <li ng-repeat="answer in answers | orderBy:'-votes'">
     {{getPlayerName(answer.playerKey)}}: {{answer.response}} : {{answer.votes}} Votes
   </li>
 </ul>

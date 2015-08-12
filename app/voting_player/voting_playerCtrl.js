@@ -12,9 +12,11 @@ angular.module('App')
     
     game.$loaded()
       .then(function(data) {
+        // if question happens to be written by the same person don't set the $scope.question to that element
+        // maybe remove it
         $scope.question = data.questions[data.currentRound];
         $scope.currentRound = data.currentRound;
-        // $scope.answers = fireBaseFactory.getPlayerAnswers();
+        // $scope.answers = removePlayerAnswer(data.answers);
       });
 
     $scope.chooseAnswer = function(playerKey) {
@@ -34,4 +36,10 @@ angular.module('App')
         }
       },500,0);
     };
+
+    $scope.filterPlayer = function(answer){
+      // filter player's own answer so they can't vote for themselves
+      return answer.playerKey !== playerKey;
+    };
+
   });
