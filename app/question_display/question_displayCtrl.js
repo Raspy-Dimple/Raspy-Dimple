@@ -9,7 +9,6 @@ angular.module("App")
 		$scope.question = data.questions[data.currentRound];
 	});
 
-	fireBaseFactory.resetTimeLeft();
 	fireBaseFactory.getTimeLeft().$bindTo($scope,'timeLeft');
 
 
@@ -23,6 +22,7 @@ angular.module("App")
 		$scope.timeLeft.$value--;
 		if ($scope.timeLeft.$value === 0){
 			$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
+			fireBaseFactory.resetTimeLeft();
 			fireBaseFactory.updateCurrentView('voting'); // Force client to update!
 			$scope.toVotingDisplay(); // Host view will update!
 		}
