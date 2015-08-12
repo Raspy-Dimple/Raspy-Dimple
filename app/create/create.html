@@ -1,11 +1,16 @@
-<div ng-controller="createCtrl">
-  <h2>Join at {{code}}</h2>
+<div id="create-host-view" ng-controller="createCtrl">
+  <h2>Create new game</h2>
 
+  <p>Join this game<br/> with the following code:</p>
+  <p id="game-code">{{code}}</p>
+
+  <p>Current players:</p>
   <ul>
-    Player List:
     <li ng-repeat="player in players">
       <span>{{player.name}}</span>
     </li>
   </ul>
-  <a ng-click="toQuestionDisplay()" href="#">GO!</a>
+  <p id="go-button">
+    <a ng-click="toQuestionDisplay()" href="#">→ → → GO! ← ← ←</a>
+  </p>
 </div>
