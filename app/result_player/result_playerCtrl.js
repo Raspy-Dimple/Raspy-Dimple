@@ -1,5 +1,5 @@
 angular.module('App')
-  .controller('result_playerCtrl', function($scope, fireBaseFactory) {
+  .controller('result_playerCtrl', function($scope, $state, fireBaseFactory) {
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
     var playerList = {}; // Store our player list.
