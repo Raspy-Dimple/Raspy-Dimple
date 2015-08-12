@@ -37,15 +37,9 @@ angular.module('App')
       },500,0);
     };
 
-    // var removePlayerAnswer = function(answers){
-    //   var newAnswers = [];
-    //   console.log("removePlayer",answers);
-    //   for (var key in answers){
-    //     if (key !== playerKey){
-    //       newAnswers.push(answers[key]);
-    //     }
-    //   }
-    //   return newAnswers;
-    // };
+    $scope.filterPlayer = function(answer){
+      // filter player's own answer so they can't vote for themselves
+      return answer.playerKey !== playerKey;
+    };
 
   });
