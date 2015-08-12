@@ -1,8 +1,7 @@
-<div ng-controller="voting_displayCtrl">
+<div id="voting-host-view">
 	
-	<p> Current Round: {{ currentRound }} </p>
-
-  Question: {{ question }}
+  <p id="current-round">Question {{ currentRound }}:</p>
+  <p id="question">{{question}}</p>
   
   <input type="submit" value="Next" ng-click="toResultDisplay()">
   <ul>
