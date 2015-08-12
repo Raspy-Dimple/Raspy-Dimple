@@ -5,7 +5,7 @@
 <p>Pick your favorite answer!!!</p>
 
 <ul>
-  <li ng-repeat="answer in answers" ng-click="chooseAnswer(answer.playerKey)" >
+  <li ng-repeat="answer in answers | filter:filterPlayer" ng-click="chooseAnswer(answer.playerKey)" >
     {{answer.response}}
   </li>
 </ul>
