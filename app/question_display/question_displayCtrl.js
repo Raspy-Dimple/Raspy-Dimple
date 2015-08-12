@@ -9,6 +9,7 @@ angular.module("App")
 		$scope.question = data.questions[data.currentRound];
 	});
 
+	fireBaseFactory.resetTimeLeft();
 	fireBaseFactory.getTimeLeft().$bindTo($scope,'timeLeft');
 
 
