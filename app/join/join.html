@@ -1,8 +1,6 @@
-<h1>JOIN VIEW</h1>
-
-<div>
-
-  <form>
+<div id="join-view">
+  <h2>Join a game!</h2>
+  <form ng-show="activeGame">
     <p>
       <label>Enter code to join game:</label>
       <input ng-model='join.code'>
@@ -13,4 +11,8 @@
     </p>
     <button name="submit" ng-click="go()">GO!</button>
   </form>
+
+  <div ng-show="!activeGame">
+    Waiting for other players . . .
+  </div>
 </div>

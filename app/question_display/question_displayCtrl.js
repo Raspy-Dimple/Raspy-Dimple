@@ -15,9 +15,12 @@ angular.module("App")
 	// $interval that will count down from 30 seconds
 	// when time is up, it will call 'toVotingDisplay'
 
-	$interval(function() {
+	// Storing our interval's promise as a variable so that we can explicitly cancel it later.
+	// Otherwise, it will keep running until it's done.
+	var intQuestionPromise = $interval(function() {
 		$scope.timeLeft.$value--;
 		if ($scope.timeLeft.$value === 0){
+			$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
 			$scope.toVotingDisplay();
 		}
 	},1000,10);

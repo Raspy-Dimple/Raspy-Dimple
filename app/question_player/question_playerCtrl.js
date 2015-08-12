@@ -1,9 +1,7 @@
 angular.module('App')
-  .controller('question_playerCtrl', function($scope, $state, $timeout, fireBaseFactory) {
+  .controller('question_playerCtrl', function($scope, $state, $interval, $timeout, fireBaseFactory) {
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
-
-
     
     game.$loaded()
       .then(function(data) {
