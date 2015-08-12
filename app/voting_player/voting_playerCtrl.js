@@ -10,7 +10,6 @@ angular.module('App')
         // maybe remove it
         $scope.question = data.questions[data.currentRound];
         $scope.currentRound = data.currentRound;
-        $scope.answers = data.answers;
         // $scope.answers = removePlayerAnswer(data.answers);
       });
 
