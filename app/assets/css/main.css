@@ -72,11 +72,17 @@ input {
   position: absolute;
   width: 100%;  
 }
+
+.host {
+  margin: 0 auto 0 auto;
+  width: 75%;
+}
+
 /*******************************************
    HOST: Home view
  *******************************************/
 
-#home-view {          
+.home-view {          
    height: 50vh;
    margin: 20vh 0 0 0;
    text-align: center;
@@ -91,13 +97,13 @@ input {
    HOST: Create New Game view
  *******************************************/
 
-#create-host-view {          
+.create-host-view {          
   height: 50vh;
   margin: 8vh 0 0 0;
   text-align: center;
 }
 
-#create-host-view ul {
+.create-host-view ul {
   -moz-column-count: 2;
   -moz-column-gap: 2.5em;
   -webkit-column-count: 2;
@@ -110,7 +116,7 @@ input {
   width: 75%;
 }
 
-#create-host-view p {
+.create-host-view p {
   padding: 0;
 }
 
@@ -126,31 +132,30 @@ input {
    Shared view elements between host and player
  *******************************************/
 
- #current-round {
-  font-size: 5vh;
-  padding: 0 0 50px 0;
-  text-align: left;
- }
+#current-round {
+font-size: 5vh;
+padding: 0 0 50px 0;
+text-align: left;
+}
 
 /*******************************************
    Host Question Display view
  *******************************************/
 
- #question-host-view {
-  height: 50vh;
-  margin: 8vh auto 0 auto;
-  text-align: center;
-  width: 75%;
- }
+.question-host-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
+text-align: center;
+}
 
- #question-host-view #question {
-  font-size: 10vh;
-  line-height: 10vh;
-  padding: 2vh;
-  text-align: center;
- }
+.question-host-view #question {
+font-size: 10vh;
+line-height: 10vh;
+padding: 2vh;
+text-align: center;
+}
 
-#question-host-view #timer {
+.question-host-view #timer {
   bottom: 3%;
   font-size: 3vh;
   padding: 2vh;
@@ -162,21 +167,21 @@ input {
    Player Question view
  *******************************************/
 
- #question-player-view {
-  height: 50vh;
-  margin: 8vh auto 0 auto;
-  text-align: center;
-  width: 80%;
- }
+.question-player-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
+text-align: center;
+width: 80%;
+}
 
- #question-player-view #current-round {
-  font-size: 5vh;
-  text-align: left;
- }
+.question-player-view #current-round {
+font-size: 5vh;
+text-align: left;
+}
 
-  #question-player-view #question {
-  font-size: 10vh;
-  line-height: 10vh;
-  padding: 2vh;
-  text-align: center;
- }
+.question-player-view #question {
+font-size: 10vh;
+line-height: 10vh;
+padding: 2vh;
+text-align: center;
+}
