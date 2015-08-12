@@ -1,9 +1,12 @@
-<div id="question-host-view" ng-controller="question_displayCtrl">
-  <p>Current Round: {{ currentRound }}</p>
+<div class="host question-host-view" ng-controller="question_displayCtrl">
 
-  Question: {{question}}
-	
-	<!-- <timer interval="1000" autostart="true" countdown="100">{{countdown}}</timer> -->
-	<input type="submit" value="Next" ng-click="toVotingDisplay()">
-  {{timeLeft.$value - 2}}
+  <p id="current-round">Question {{ currentRound }}:</p>
+  <p id="question">{{question}}</p>
+  
+  <!-- <timer interval="1000" autostart="true" countdown="100">{{countdown}}</timer> -->
+  <p id="go-button">
+    <a ng-click="toVotingDisplay()" href="#">→See Answers!</a>
+  </p>
+  
+  <p id="timer">{{timeLeft.$value - 2}}</p>
 </div>

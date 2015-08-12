@@ -1,7 +1,9 @@
-<div ng-controller="result_displayCtrl">
-	<p> Current Round: {{ currentRound }} </p>
-	Question: {{ question }}
-	<ul>
+<div class="host results-host-view">
+
+  <p id="current-round">Question {{ currentRound }}:</p>
+  <p id="question">{{question}}</p>
+
+	<ul id="results">
 		<li ng-repeat="answer in answers">
 			{{ players[answer.playerKey].name }} 
 			<br>
@@ -11,5 +13,7 @@
 		</li>
 	</ul>
 
-	<input type="submit" value="Next" ng-click="toNextDisplay()">
+  <p id="go-button">
+    <a ng-click="toNextDisplay()" href="#">→Next Round!</a>
+  </p>
 </div>
