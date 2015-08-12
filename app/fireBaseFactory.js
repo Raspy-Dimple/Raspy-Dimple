@@ -90,7 +90,6 @@ angular.module("App")
     return playerKey;
   };
 
-<<<<<<< HEAD
   // This function does 2 things:
   // 1. Sets our join condition so no more players can join the game.
   // 2. Sets the active state of the game so that we can now push players into the questions.
@@ -98,8 +97,6 @@ angular.module("App")
     return player;
   };
 
-=======
->>>>>>> final_result_player.html and ctrl.js complete and tested
   var setJoin = function(canJoin, id){
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     newRef.update({join: canJoin});
@@ -183,7 +180,6 @@ angular.module("App")
         angular.forEach(questions.val(), function(question) {
           tempQuestions.push(question.question);
         });
-
         // add ten random questions and add a random name to each one where 'JARVIS' is located
         var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
         var counter = 1;
