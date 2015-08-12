@@ -1,30 +1,29 @@
 angular.module('App')
-	.controller('final_result_playerCtrl', function($scope, $state, fireBaseFactory) {
+	.controller('final_result_playerCtrl', function($scope, $state, $firebaseObject, fireBaseFactory) {
 		// get all players and compare score
 		var game = fireBaseFactory.getGame();
+		var playerKey = fireBaseFactory.getPlayerKey();
+		var currPlayer = null;
+		var highestVote = 0;
+		var winner = "";
+
 		game.$loaded()
 			.then(function(data) {
 				var players = data.players;
 
 				// find winner
-				var highestVote = -1;
-				var winner = "";
-				for (var player in players) {
-					console.log("player name: ", player.name)
-					console.log("player name: ", player.votes)
+				// https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebaseobject
+				angular.forEach(players, function(player) {
 					if (player.votes > highestVote) {
-						highestVote = player.vote;
+						highestVote = player.votes;
 						winner = player.name;
 					}
-				}
-				console.log("winner: ", winner);
+				});
 
-				// find player
-				var player = fireBaseFactory.getPlayer();
+				currPlayer = players[playerKey].name;
 
-				console.log("current player info: ", player)
 				// set verdict message
-				if (player.name === winner) {
+				if (currPlayer === winner) {
 					$scope.verdict = "You Win!"
 				} else {
 					$scope.verdict = "You Lose!"

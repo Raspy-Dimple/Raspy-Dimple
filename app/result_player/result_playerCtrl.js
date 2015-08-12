@@ -22,7 +22,7 @@ angular.module('App')
 
     // navigate to new question or final result
     $scope.toNextDisplay = function() {
-      if ($scope.currentRound >= 1) {
+      if ($scope.currentRound >= 10) {
         $state.go('final_result_player');
       } else {
         $state.go('question_player')
