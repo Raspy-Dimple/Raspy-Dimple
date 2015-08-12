@@ -24,6 +24,7 @@ angular.module("App")
       join: true,
       active: false,
       currentRound: 1,
+      currentView: 'question',
       timeLeft: 10,
       questions: {
         1: "What does JARVIS like to do on a Saturday night?",
@@ -80,6 +81,29 @@ angular.module("App")
 
     // Return the state of our game to the controller.
     return activeGame;
+  };
+
+  // This method is called by each player view to find out if it's okay
+  // to move onto the next view. This acts as a gate so that players aren't
+  // able to move ahead or go out of sync with the game.
+  var getCurrentView = function() {
+    var curView;
+    // Query game to find out if the game is in an active state.
+    // This query method can be found here: https://www.firebase.com/blog/2013-10-01-queries-part-one.html#byid
+    new Firebase("https://exposeyourself.firebaseio.com/games/" + game.$id + "/currentView").once('value', function(data) {
+      console.log('DATA', data.val());
+      curView = data.val();
+    });
+
+    // Return the state of our game to the controller.
+    return curView;    
+  }
+
+  var updateCurrentView = function(view) {
+    // Query game to find out if the game is in an active state.
+    // This query method can be found here: https://www.firebase.com/blog/2013-10-01-queries-part-one.html#byid
+    var ref = new Firebase("https://exposeyourself.firebaseio.com/games/" + game.$id);
+    ref.update({currentView: view});
   }
 
   var getGame = function() {
@@ -232,6 +256,7 @@ angular.module("App")
     checkActive: checkActive,
     createGame: createGame,
     clearAnswers: clearAnswers,
+    getCurrentView: getCurrentView,
     getGame: getGame,
     getPlayerKey: getPlayerKey,
     getPlayerAnswers: getPlayerAnswers,
@@ -240,6 +265,7 @@ angular.module("App")
     incrementPlayerScore: incrementPlayerScore,
     incrementRound: incrementRound,
     joinGame: joinGame,
-    setJoin: setJoin  
+    setJoin: setJoin,
+    updateCurrentView: updateCurrentView  
   };
 });

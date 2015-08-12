@@ -17,15 +17,16 @@ angular.module("App")
 
 	// Storing our interval's promise as a variable so that we can explicitly cancel it later.
 	// Otherwise, it will keep running until it's done.
-	var intQuestionPromise = $interval(function() {
-		$scope.timeLeft.$value--;
-		if ($scope.timeLeft.$value === 0){
-			$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
-			$scope.toVotingDisplay();
-		}
-	},1000,10);
+	// var intQuestionPromise = $interval(function() {
+	// 	$scope.timeLeft.$value--;
+	// 	if ($scope.timeLeft.$value === 0){
+	// 		$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
+	// 		$scope.toVotingDisplay();
+	// 	}
+	// },1000,10);
 
 	$scope.toVotingDisplay = function() {
+		fireBaseFactory.updateCurrentView('voting');
 		$state.go("voting_display");
 	};
 
