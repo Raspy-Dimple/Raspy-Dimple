@@ -15,7 +15,6 @@ angular.module("App")
 	// $interval that will count down from 30 seconds
 	// when time is up, it will call 'toVotingDisplay'
 
-<<<<<<< HEAD
 
 	// Storing our interval's promise as a variable so that we can explicitly cancel it later.
 	// Otherwise, it will keep running until it's done.
@@ -26,22 +25,10 @@ angular.module("App")
 			$scope.toVotingDisplay();
 		}
 	},1000,10);
-	// $interval(function() {
-	// 	$scope.timeLeft.$value--;
-	// 	if ($scope.timeLeft.$value === 0){
-	// 		$scope.toVotingDisplay();
-	// 	}
-	// },1000,10);
-=======
-	$interval(function() {
-		$scope.timeLeft.$value--;
-		if ($scope.timeLeft.$value === 0){
-			$scope.toVotingDisplay();
-		}
-	},1000,10);
->>>>>>> final_result_player.html and ctrl.js complete and tested
+
 
 	$scope.toVotingDisplay = function() {
+		fireBaseFactory.updateCurrentView('voting');
 		$state.go("voting_display");
 	};
 

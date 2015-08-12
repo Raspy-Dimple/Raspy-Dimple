@@ -1,5 +1,6 @@
 angular.module('App')
-  .controller('result_playerCtrl', function($scope, $state, fireBaseFactory) {
+
+  .controller('result_playerCtrl', function($scope, $state, $interval, fireBaseFactory) {
     var game = fireBaseFactory.getGame();
     var playerKey = fireBaseFactory.getPlayerKey();
     var playerList = {}; // Store our player list.
@@ -28,4 +29,17 @@ angular.module('App')
         $state.go('question_player')
       }
     };
+
+    // Setting up an interval to poll Firebase and see if
+    // we can automatically change views yet.
+    // Store interval promise so that we can destroy it once we're done.
+    var intPlayerResultPromise = $interval(function() {
+      $scope.curView = fireBaseFactory.getCurrentView();
+      if ($scope.curView === 'question'){
+        //console.log('Yaaaay');
+        $interval.cancel(intPlayerResultPromise); // Destroy our interval, now that we no longer need it.
+        $state.go('question_player');
+      }
+    },500,0);
+
   })
