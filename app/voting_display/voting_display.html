@@ -1,15 +1,14 @@
-<div id="voting-host-view">
+<div class="host voting-host-view">
 	
   <p id="current-round">Question {{ currentRound }}:</p>
   <p id="question">{{question}}</p>
   
-  <input type="submit" value="Next" ng-click="toResultDisplay()">
   <ul>
     <li ng-repeat="answer in answers">
       {{answer.response}}
     </li>
   </ul>
 
-  <a ng-click="toResultDisplay()" href="#">GO!</a>
+  <a ng-click="toResultDisplay()" href="#">See Results!</a>
 
 </div>
