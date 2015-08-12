@@ -4,6 +4,7 @@ angular.module("App")
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
   var playerKey = null;
+  var TIME_LEFT = 10;
   // var gameId = null;  might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
   
   // Generate a random string of 5 characters that we will use for our game ID's.
@@ -19,13 +20,14 @@ angular.module("App")
       return gameID;
   };
 
+
   var createGame = function() {
     var gameObject = {
       join: true,
       active: false,
       currentRound: 1,
       currentView: 'question',
-      timeLeft: 10,
+      timeLeft: TIME_LEFT,
       questions: {
         1: "What does JARVIS like to do on a Saturday night?",
         2: "What is JARVIS's favorite type of food?",
@@ -56,7 +58,7 @@ angular.module("App")
 
   var joinGame = function(id, name) {
     // Convert our ID to Upper Case since that's what's created by our short code generator.
-    var id = id.toUpperCase(); 
+    var id = id.toUpperCase();
     
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     // gameId = id; might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
@@ -164,6 +166,11 @@ angular.module("App")
     return $firebaseObject(ref.child('timeLeft'));
   };
 
+  var resetTimeLeft = function(){
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
+    ref.child('timeLeft').set(TIME_LEFT);
+  };
+
   // Might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
   // var playerAdded = function(cb){
   //   var playersRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + gameId + "/players");
@@ -263,6 +270,7 @@ angular.module("App")
     getPlayerAnswers: getPlayerAnswers,
     getPlayerNames: getPlayerNames,
     getTimeLeft: getTimeLeft,
+    resetTimeLeft: resetTimeLeft,
     incrementPlayerScore: incrementPlayerScore,
     incrementRound: incrementRound,
     joinGame: joinGame,
