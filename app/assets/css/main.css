@@ -164,6 +164,56 @@ text-align: center;
  }
 
 /*******************************************
+   Host Voting Display view
+ *******************************************/
+
+.voting-host-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
+text-align: center;
+}
+
+.voting-host-view #question {
+font-size: 10vh;
+line-height: 10vh;
+padding: 2vh;
+text-align: center;
+}
+
+.voting-host-view #timer {
+  bottom: 3%;
+  font-size: 3vh;
+  padding: 2vh;
+  position: absolute;
+  right: 5%;
+ }
+
+/*******************************************
+   Host Result Display view
+ *******************************************/
+
+.results-host-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
+text-align: center;
+}
+
+.results-host-view #question {
+font-size: 10vh;
+line-height: 10vh;
+padding: 2vh;
+text-align: center;
+}
+
+.results-host-view #timer {
+  bottom: 3%;
+  font-size: 3vh;
+  padding: 2vh;
+  position: absolute;
+  right: 5%;
+ }
+
+/*******************************************
    Player Question view
  *******************************************/
 
