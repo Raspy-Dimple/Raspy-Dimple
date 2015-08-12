@@ -19,22 +19,22 @@ angular.module('App')
         // $scope.answers = removePlayerAnswer(data.answers);
       });
 
+    // Setting up an interval to poll Firebase and see if
+    // we can automatically change views yet.
+    // Store interval promise so that we can destroy it once we're done.
+    var intPlayerVotingPromise = $interval(function() {
+      $scope.curView = fireBaseFactory.getCurrentView();
+      if ($scope.curView === 'results'){
+        //console.log('Yaaaay');
+        $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
+        $state.go('result_player');
+      }
+    },500,0);
+
     $scope.chooseAnswer = function(playerKey) {
       // increment the current answers vote count
+      $scope.holdView = true;
       fireBaseFactory.incrementPlayerScore(playerKey);
-
-      // Setting up an interval to poll Firebase and see if
-      // we can automatically change views yet.
-      // Store interval promise so that we can destroy it once we're done.
-      var intPlayerVotingPromise = $interval(function() {
-        $scope.holdView = true;
-        $scope.curView = fireBaseFactory.getCurrentView();
-        if ($scope.curView === 'results'){
-          //console.log('Yaaaay');
-          $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
-          $state.go('result_player');
-        }
-      },500,0);
     };
 
     $scope.filterPlayer = function(answer){

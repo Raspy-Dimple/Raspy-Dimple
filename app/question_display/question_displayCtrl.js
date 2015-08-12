@@ -22,7 +22,8 @@ angular.module("App")
 		$scope.timeLeft.$value--;
 		if ($scope.timeLeft.$value === 0){
 			$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
-			$scope.toVotingDisplay();
+			fireBaseFactory.updateCurrentView('voting'); // Force client to update!
+			$scope.toVotingDisplay(); // Host view will update!
 		}
 	},1000,10);
 
