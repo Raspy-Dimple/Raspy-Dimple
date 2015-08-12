@@ -3,7 +3,6 @@ angular.module("App")
   
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
-  var player = null;
   var playerKey = null;
   // var gameId = null;  might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
   
@@ -57,9 +56,7 @@ angular.module("App")
     // Convert our ID to Upper Case since that's what's created by our short code generator.
     var id = id.toUpperCase(); 
     
-    player = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
-    player = newRef;
     // gameId = id; might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
     playerKey = newRef.child("players").push({name: name, votes: 0}).key();
     game = $firebaseObject(newRef);
@@ -72,10 +69,6 @@ angular.module("App")
 
   var getPlayerKey = function() {
     return playerKey;
-  };
-
-  var getPlayer = function() {
-    return player;
   };
 
   var setJoin = function(canJoin, id){
@@ -206,7 +199,6 @@ angular.module("App")
     createGame: createGame,
     clearAnswers: clearAnswers,
     getGame: getGame,
-    getPlayer: getPlayer,
     getPlayerKey: getPlayerKey,
     getPlayerAnswers: getPlayerAnswers,
     getPlayerNames: getPlayerNames,
