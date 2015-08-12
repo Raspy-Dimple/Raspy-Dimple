@@ -20,6 +20,5 @@ angular.module("App")
 			fireBaseFactory.clearAnswers();
 			$state.go("question_display");
 		}
-		// $state.go("question_display");
 	}
 })

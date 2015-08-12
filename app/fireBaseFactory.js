@@ -39,7 +39,7 @@ angular.module("App")
     };
     //game = $firebaseObject(ref.push(gameObject));
     var gameID = createGameID();
-    console.log('Game ID: ', gameID);
+    // console.log('Game ID: ', gameID);
 
     // Instantiate a new game with our newly generated short code ID.
     // Note: If we don't utilize a short code, and instead use the FireBase "push" method,
@@ -64,7 +64,6 @@ angular.module("App")
   };
 
   var getGame = function() {
-    //console.log("Game",game);
     return game;
   };
 
@@ -154,8 +153,8 @@ angular.module("App")
         angular.forEach(questions.val(), function(question) {
           tempQuestions.push(question.question);
         });
-        console.log(tempQuestions);
-        console.log(tempPlayers);
+        // console.log(tempQuestions);
+        // console.log(tempPlayers);
         // add ten random questions and add a random name to each one where 'JARVIS' is located
         var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
         var counter = 1;
@@ -207,6 +206,6 @@ angular.module("App")
     incrementPlayerScore: incrementPlayerScore,
     incrementRound: incrementRound,
     joinGame: joinGame,
-    setJoin: setJoin  
+    setJoin: setJoin
   };
 });

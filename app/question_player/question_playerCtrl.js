@@ -22,9 +22,6 @@ angular.module('App')
     });
 
 
-
-
-
     $scope.submitPlayerAnswer = function(answer) {
       var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
       if ($scope.answer !== undefined){
