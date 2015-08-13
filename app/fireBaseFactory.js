@@ -227,7 +227,7 @@ angular.module("App")
         }
 
         angular.forEach(tempQuestions, function(question) {
-          if(counter < 10) {
+          if(counter <= 10) {
             var tempQues = {};
             tempQues[counter] = replaceName(question, randomName(tempPlayers));
             ref.child('questions').update(tempQues);
