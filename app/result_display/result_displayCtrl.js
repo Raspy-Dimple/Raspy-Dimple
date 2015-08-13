@@ -1,5 +1,5 @@
 angular.module("App")
-.controller("result_displayCtrl", function($scope, $state, fireBaseFactory) {
+.controller("result_displayCtrl", function($scope, $state, $interval, fireBaseFactory) {
 
   $scope.answers = fireBaseFactory.getPlayerAnswers();
 
@@ -9,6 +9,18 @@ angular.module("App")
 		$scope.question = data.questions[data.currentRound];
 		$scope.players = data.players;
 	});
+
+	fireBaseFactory.getTimeLeft().$bindTo($scope,'timeLeft');
+
+	var intQuestionPromise = $interval(function() {
+		$scope.timeLeft.$value--;
+		if ($scope.timeLeft.$value === 0){
+			$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
+			fireBaseFactory.updateCurrentView('nextDisplay'); // Force client to update!
+			fireBaseFactory.resetTimeLeft();
+			$scope.toNextDisplay(); // Host view will update!
+		}
+	},1000,10);
 
 	// redirect to question_display
 	$scope.toNextDisplay = function() {
@@ -21,5 +33,5 @@ angular.module("App")
 			fireBaseFactory.updateCurrentView('question');
 			$state.go("question_display");
 		}
-	}
-})
+	};
+});

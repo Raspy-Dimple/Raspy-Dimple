@@ -19,7 +19,8 @@ angular.module('App')
 
     $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
       console.log("newVal", newVal);
-      if(newVal === 2) {
+      var serverLagCeil = 2;
+      if(newVal === serverLagCeil) {
         console.log("in equals of watch");
         $scope.submitPlayerAnswer();
       }

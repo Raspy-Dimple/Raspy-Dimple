@@ -16,7 +16,7 @@ angular.module('App')
         // maybe remove it
         $scope.question = data.questions[data.currentRound];
         $scope.currentRound = data.currentRound;
-        // $scope.answers = removePlayerAnswer(data.answers);
+        $scope.timeLeft = fireBaseFactory.getTimeLeft();
       });
 
     // Setting up an interval to poll Firebase and see if
@@ -30,6 +30,15 @@ angular.module('App')
         $state.go('result_player');
       }
     },500,0);
+
+    
+    $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
+      console.log("newVal", newVal);
+      if(newVal === 2) {
+        console.log("in equals of watch");
+        $scope.submitPlayerAnswer();
+      }
+    });
 
     $scope.chooseAnswer = function(playerKey) {
       // increment the current answers vote count

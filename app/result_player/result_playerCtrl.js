@@ -14,11 +14,29 @@ angular.module('App')
         //$scope.playerNames = data.players.
         console.log('DATA.PLAYERS ', data.players);
         playerList = data.players;
+        $scope.timeLeft = fireBaseFactory.getTimeLeft();
       });
 
     $scope.getPlayerName = function(playerKey) {
       return playerList[playerKey].name;
     };
+
+    var intPlayerVotingPromise = $interval(function() {
+      $scope.curView = fireBaseFactory.getCurrentView();
+      if ($scope.curView === 'nextDisplay'){
+        //console.log('Yaaaay');
+        $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
+        $scope.toNextDisplay();
+      }
+    },500,0);
+
+    
+    $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
+      // if(newVal === 2) {
+      //   $scope.toNextDisplay();
+      // }
+    });
+
 
     // navigate to new question or to final result
     $scope.toNextDisplay = function() {
