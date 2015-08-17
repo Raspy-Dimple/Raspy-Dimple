@@ -22,4 +22,4 @@ We used the following in our tech stack:
 * [How to contribute to project](https://github.com/Raspy-Dimple/Raspy-Dimple/blob/master/_CONTRIBUTING.md)
 * [Press Release](https://github.com/Raspy-Dimple/Raspy-Dimple/blob/master/_CONTRIBUTING.md)
 
-## Raspy-Dimple, LLC ##
+### Raspy-Dimple, LLC ###
