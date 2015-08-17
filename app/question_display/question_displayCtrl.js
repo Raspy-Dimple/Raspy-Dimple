@@ -26,7 +26,7 @@ angular.module("App")
 			fireBaseFactory.updateCurrentView('voting'); // Force client to update!
 			$scope.toVotingDisplay(); // Host view will update!
 		}
-	},1000,10);
+	},1000, fireBaseFactory.getGameTime());
 
 
 	$scope.toVotingDisplay = function() {

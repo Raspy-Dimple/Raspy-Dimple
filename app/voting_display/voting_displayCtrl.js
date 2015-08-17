@@ -20,7 +20,7 @@ angular.module("App")
       fireBaseFactory.updateCurrentView('results'); // Force client to update!
       $scope.toResultDisplay(); // Host view will update!
     }
-  },1000,10);
+  },1000, fireBaseFactory.getGameTime());
 
   setInterval(function() {
     game = fireBaseFactory.getGame();
