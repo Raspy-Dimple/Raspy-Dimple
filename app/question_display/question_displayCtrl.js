@@ -20,7 +20,7 @@ angular.module("App")
 	// Otherwise, it will keep running until it's done.
 	var intQuestionPromise = $interval(function() {
 		$scope.timeLeft.$value--;
-		if ($scope.timeLeft.$value === 0){
+		if ($scope.timeLeft.$value <= 0){
 			$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
 			fireBaseFactory.resetTimeLeft();
 			fireBaseFactory.updateCurrentView('voting'); // Force client to update!

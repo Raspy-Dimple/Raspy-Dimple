@@ -14,7 +14,7 @@ angular.module("App")
 
 	var intQuestionPromise = $interval(function() {
 		$scope.timeLeft.$value--;
-		if ($scope.timeLeft.$value === 0){
+		if ($scope.timeLeft.$value <= 0){
 			$interval.cancel(intQuestionPromise); // Cancel the interval once we're done with it.
 			fireBaseFactory.updateCurrentView('nextDisplay'); // Force client to update!
 			fireBaseFactory.resetTimeLeft();
