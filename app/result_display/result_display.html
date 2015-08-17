@@ -1,8 +1,6 @@
 <div class="host results-host-view">
 
-  <p id="current-round">Question {{ currentRound }}:</p>
-  <p id="question">{{question}}</p>
-
+  <p id="current-round">Results:</p>
 	<ul id="results">
 		<li ng-repeat="answer in answers">
 			{{ players[answer.playerKey].name }} 
@@ -13,9 +11,5 @@
 		</li>
 	</ul>
 
-	{{timeLeft.$value}}
-  
-  <p id="go-button">
-    <a ng-click="toNextDisplay()" href="#">→Next Round!</a>
-  </p>
+	<p id="timer">{{timeLeft.$value}}</p>
 </div>

@@ -1,17 +1,14 @@
 <div class="host voting-host-view">
 	
   <p id="current-round">Question {{ currentRound }}:</p>
-  <p id="question">{{question}}</p>
+  <p id="question-voting">{{question}}</p>
   
+  <p>Pick your favorite answer:</p>
   <ul id="answers">
     <li ng-repeat="answer in answers">
       {{answer.response}}
     </li>
   </ul>
 
-  {{timeLeft.$value}}
-
-  <a ng-click="toResultDisplay()" href="#">See Results!</a>
-
-
+  <p id="timer">{{timeLeft.$value}}</p>
 </div>
