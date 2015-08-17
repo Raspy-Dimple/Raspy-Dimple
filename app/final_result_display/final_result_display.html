@@ -1,7 +1,23 @@
-<p>Final Result</p>
-<ul>
+<div class="host-final-result-view">
+<h1>Final Result</h1>
+<!-- <ul>
 	<li ng-repeat="player in players | orderBy:'-votes'">
 		{{ player.name }} : {{ player.votes }} Total Votes
 	</li>
-</ul>
-<input type="submit" value="Play Another Game!" ng-click="toHome()">
+</ul> -->
+
+<div>
+	<div ng-repeat="player in players | orderBy:'-votes'">
+		&bull; {{ player.name }} : {{ player.votes }} Total Votes
+	</div>
+</div>
+
+<!-- <div class="final-results">
+	    <div>&bull; Lily: 3 Total Votes</div>
+	    <div>&bull; Lily: 3 Total Votes</div>
+	    <div>&bull; Lily: 3 Total Votes</div>
+	    <div>&bull; Lily: 3 Total Votes</div>
+</div> -->
+<!-- <input type="submit" value="Play Another Game!" ng-click="toHome()"> -->
+<button type="button" ng-click="toHome()">Play Another Game</button>
+</div>

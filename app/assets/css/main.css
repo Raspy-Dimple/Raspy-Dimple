@@ -245,6 +245,28 @@ margin-bottom: 3vh;
 }
 
 /*******************************************
+   Host Final Result view
+ *******************************************/
+
+.host-final-result-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
+text-align: center;
+width: 80%;
+}
+.host-final-result-view h1 {
+font-size: 8vmin;
+line-height: 8vmin;
+}
+
+.host-final-result-view .final-results {
+line-height: 10vmin;
+color: aqua;
+margin-top: 7vh;
+margin-bottom: 7vh;
+}
+
+/*******************************************
    Player: Join view
  *******************************************/
 
@@ -345,4 +367,19 @@ line-height: 7vmin;
 color: #0099FF;
 margin-top: 1vh;
 margin-bottom: 1vh;
+}
+
+/*******************************************
+   Player Final Result view
+ *******************************************/
+
+.player-final-result-view {          
+   height: 50vh;
+   margin: 20vh 0 0 0;
+   text-align: center;
+}
+  
+.player-final-result-view .verdict {
+  font-size: 20vmin;
+  padding: 0;
 }
