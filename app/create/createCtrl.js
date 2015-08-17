@@ -14,11 +14,10 @@ angular.module("App")
   $scope.players = fireBaseFactory.getPlayerNames();
 
   $scope.toQuestionDisplay = function(){
-    fireBaseFactory.setJoin(false, game.$id);// no more people can join the game
-
     // Added a callback parameter for the addQuestion method in the factory.
     // This will not trigger the state change until we've added 10 questions to the database.
     fireBaseFactory.addQuestions(function() {
+      fireBaseFactory.setJoin(false, game.$id);// no more people can join the game
       $state.go("question_display"); // navigate to the question display page
     });
   };
