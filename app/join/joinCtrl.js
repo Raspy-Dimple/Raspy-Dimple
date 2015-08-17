@@ -29,7 +29,6 @@ angular.module("App")
   // 
   // Once this is done, we redirect player to the question page, using $state.
   $scope.go = function() {
-    // console.log($scope.join.code + ' & ' + $scope.join.name);
     fireBaseFactory.joinGame($scope.join.code, $scope.join.name);
 
     // Setting up an interval to poll Firebase and see if the game is ready to start yet.
@@ -37,7 +36,6 @@ angular.module("App")
     var intJoinPromise = $interval(function() {
       $scope.activeGame = fireBaseFactory.checkActive($scope.join.code);
       if ($scope.activeGame){
-        //console.log('Yaaaay');
         $interval.cancel(intJoinPromise); // Destroy our interval, now that we no longer need it.
         $state.go('question_player');
       }

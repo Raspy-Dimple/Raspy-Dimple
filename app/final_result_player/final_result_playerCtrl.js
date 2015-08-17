@@ -11,8 +11,6 @@ angular.module('App')
 			.then(function(data) {
 				var players = data.players;
 
-				// find winner
-				// https://www.firebase.com/docs/web/libraries/angular/api.html#angularfire-firebaseobject
 				angular.forEach(players, function(player) {
 					if (player.votes > highestVote) {
 						highestVote = player.votes;

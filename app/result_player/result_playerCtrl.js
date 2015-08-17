@@ -11,8 +11,6 @@ angular.module('App')
         $scope.question = data.questions[data.currentRound];
         // get current round
         $scope.currentRound = data.currentRound;
-        //$scope.playerNames = data.players.
-        console.log('DATA.PLAYERS ', data.players);
         playerList = data.players;
         $scope.timeLeft = fireBaseFactory.getTimeLeft();
       });
@@ -24,17 +22,14 @@ angular.module('App')
     var intPlayerVotingPromise = $interval(function() {
       $scope.curView = fireBaseFactory.getCurrentView();
       if ($scope.curView === 'nextDisplay'){
-        //console.log('Yaaaay');
         $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
         $scope.toNextDisplay();
       }
     },500,0);
 
-    
+    // ensure we watch for any change in value so it reupdates on screen
     $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
-      // if(newVal === 2) {
-      //   $scope.toNextDisplay();
-      // }
+    
     });
 
 
@@ -53,7 +48,6 @@ angular.module('App')
     var intPlayerResultPromise = $interval(function() {
       $scope.curView = fireBaseFactory.getCurrentView();
       if ($scope.curView === 'question'){
-        //console.log('Yaaaay');
         $interval.cancel(intPlayerResultPromise); // Destroy our interval, now that we no longer need it.
         $state.go('question_player');
       }
