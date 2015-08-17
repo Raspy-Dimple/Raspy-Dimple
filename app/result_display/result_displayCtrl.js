@@ -20,7 +20,7 @@ angular.module("App")
 			fireBaseFactory.resetTimeLeft();
 			$scope.toNextDisplay(); // Host view will update!
 		}
-	},1000,10);
+	},1000, fireBaseFactory.getGameTime());
 
 	// redirect to question_display
 	$scope.toNextDisplay = function() {

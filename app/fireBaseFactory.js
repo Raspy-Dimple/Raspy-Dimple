@@ -159,6 +159,10 @@ angular.module("App")
     return $firebaseObject(ref.child('timeLeft'));
   };
 
+  var getGameTime = function() {
+    return TIME_LEFT;
+  }
+
   var resetTimeLeft = function(){
     var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
     ref.child('timeLeft').set(TIME_LEFT);
@@ -184,7 +188,7 @@ angular.module("App")
     };
 
     // get access to the names for the current game
-    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id '/players');
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id + '/players');
     ref.once('value', function(players) {
       var tempPlayers = [];
       console.log(players.val());
@@ -253,6 +257,7 @@ angular.module("App")
     clearAnswers: clearAnswers,
     getCurrentView: getCurrentView,
     getGame: getGame,
+    getGameTime: getGameTime,
     getPlayerKey: getPlayerKey,
     getPlayerAnswers: getPlayerAnswers,
     getPlayerNames: getPlayerNames,
