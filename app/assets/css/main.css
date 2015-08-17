@@ -73,6 +73,10 @@ input {
   width: 100%;  
 }
 
+ol, ul {
+  list-style: none;
+}
+
 .host {
   margin: 0 auto 0 auto;
   width: 75%;
