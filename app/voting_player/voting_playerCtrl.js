@@ -28,7 +28,7 @@ angular.module('App')
         $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
         $state.go('result_player');
       }
-    },100,0);
+    },250,0);
 
     
     $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
