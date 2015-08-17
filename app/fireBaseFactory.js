@@ -182,12 +182,14 @@ angular.module("App")
       }
       return questionsArray;
     };
+    
     // get access to the names for the current game
     var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id '/players');
     ref.once('value', function(players) {
       var tempPlayers = [];
       console.log(players.val());
       angular.forEach(players.val(), function(player) {
+        console.log("player === ", player);
         tempPlayers.push(player.name);
       });
       var ref = new Firebase('https://exposeyourself.firebaseio.com/questionDB');
