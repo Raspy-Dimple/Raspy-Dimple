@@ -32,7 +32,7 @@ angular.module('App')
 
     
     $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
-      if(newVal === 2) {
+      if(newVal <= 2) {
         $scope.submitPlayerAnswer();
       }
     });

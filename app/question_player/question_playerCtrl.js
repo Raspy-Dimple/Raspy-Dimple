@@ -34,7 +34,7 @@ angular.module('App')
         $interval.cancel(intPlayerQuestionPromise); // Destroy our interval, now that we no longer need it.
         $state.go('voting_player');
       }
-    },250,0);
+    },100,0);
 
     $scope.submitPlayerAnswer = function(answer) {
       $scope.holdView = true;
