@@ -1,46 +1,18 @@
 <div class="result-player-view">
 	<p> Current Round: {{ currentRound }} </p>
-	<!-- <p> Current Round: 2 </p> -->
 
 	<h1>VOTING RESULTS!</h1>
 
 	<p class="question">{{question}}</p>
-	<!-- <p class="question">What did JARVIS's parents say to them when they were born?</p> -->
 
 	<p>{{timeLeft.$value}}</p>
-	<!-- <p>10</p> -->
 
-	<!-- <ul>
-	  <li ng-repeat="answer in answers | orderBy:'-votes'">
-	    {{getPlayerName(answer.playerKey)}}: {{answer.response}} : {{answer.votes}} Votes
-	  </li>
-	</ul> -->
 	<div class="results">
 	  <div ng-repeat="answer in answers | orderBy:'-votes'">
 	    &bull; {{getPlayerName(answer.playerKey)}} {{answer.votes}} Votes:
 	    {{answer.response}}
 	  </div>
 	</div>
-
-	<!-- <div class="results">
-	    <div>&bull; Lily 3 Votes: 
-	    	aeiruh aerihvioer  aehir
-	    </div>
-	    <div>&bull; Lily 3 Votes: 
-	    	aeiruh aerihvioer  aehir
-	    </div>
-	    <div>&bull; Lily 3 Votes: 
-	    	aeiruh aerihvioer  aehir
-	    </div>
-	    <div>&bull; Lily 3 Votes: 
-	    	aeiruh aerihvioer  aehir
-	    </div>
-  	</div> -->
-
-	<!-- replaced Temporary Button -->
-	<!-- <input type="submit" value="Next" ng-click="toNextDisplay()"> -->
-	<!-- <button type="submit" ng-click="toNextDisplay()">Next</button> -->
-
 	<p>Get ready for next round!</p>
 </div>
 <!-- Temporary Button to move us to the next round. -->
