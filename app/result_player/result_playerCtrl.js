@@ -25,7 +25,7 @@ angular.module('App')
         $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
         $scope.toNextDisplay();
       }
-    },100,0);
+    },250,0);
 
     // navigate to new question or to final result
     $scope.toNextDisplay = function() {
@@ -45,6 +45,6 @@ angular.module('App')
         $interval.cancel(intPlayerResultPromise); // Destroy our interval, now that we no longer need it.
         $state.go('question_player');
       }
-    },500,0);
+    },250,0);
 
   });

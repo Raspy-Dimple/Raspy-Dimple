@@ -22,15 +22,6 @@ angular.module("App")
     }
   },1000, fireBaseFactory.getGameTime());
 
-  setInterval(function() {
-    game = fireBaseFactory.getGame();
-    game.$loaded()
-        .then(function(data) {
-          $scope.answers = data.answers;
-          $scope.$apply();
-        })
-    }, 2500);
-
   $scope.toResultDisplay = function() {
     fireBaseFactory.updateCurrentView('results');
     $state.go("result_display");

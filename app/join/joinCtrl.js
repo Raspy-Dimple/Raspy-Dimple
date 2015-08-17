@@ -39,6 +39,6 @@ angular.module("App")
         $interval.cancel(intJoinPromise); // Destroy our interval, now that we no longer need it.
         $state.go('question_player');
       }
-    },50,0);
+    },250,0);
   }
 });
