@@ -27,12 +27,6 @@ angular.module('App')
       }
     },100,0);
 
-    // ensure we watch for any change in value so it reupdates on screen
-    $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
-    
-    });
-
-
     // navigate to new question or to final result
     $scope.toNextDisplay = function() {
       if ($scope.currentRound >= fireBaseFactory.getEndRound()) {

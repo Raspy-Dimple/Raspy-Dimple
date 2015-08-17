@@ -30,13 +30,6 @@ angular.module('App')
       }
     },100,0);
 
-    
-    $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
-      if(newVal === 2) {
-        $scope.submitPlayerAnswer();
-      }
-    });
-
     $scope.chooseAnswer = function(playerKey) {
       // increment the current answers vote count
       $scope.holdView = true;
