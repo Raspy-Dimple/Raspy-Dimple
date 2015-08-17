@@ -3,7 +3,7 @@
     <p>Current Round: {{ currentRound }}</p>
     <p class="question">{{question}}</p>
    
-    <p>{{timeLeft.$value-2}}</p>
+    <p>{{timeLeft.$value}}</p>
 
     <form ng-submit="submitPlayerAnswer(answer)">
       <input ng-model="answer" type="textarea"/>

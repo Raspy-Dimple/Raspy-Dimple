@@ -14,15 +14,8 @@ angular.module('App')
         $scope.question = data.questions[data.currentRound];
         // get current round
         $scope.currentRound = data.currentRound;
-        $scope.timeLeft = fireBaseFactory.getTimeLeft();
+        fireBaseFactory.getTimeLeft().$bindTo($scope,'timeLeft');
       });
-
-    $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
-      var serverLagCeil = 2;
-      if(newVal === serverLagCeil) {
-        $scope.submitPlayerAnswer();
-      }
-    });
 
     // Setting up an interval to poll Firebase and see if
     // we can automatically change views yet.
@@ -31,6 +24,7 @@ angular.module('App')
       $scope.curView = fireBaseFactory.getCurrentView();
       //if ($scope.curView === 'voting'){
       if ($scope.curView !== 'question'){
+        $scope.submitPlayerAnswer();
         $interval.cancel(intPlayerQuestionPromise); // Destroy our interval, now that we no longer need it.
         $state.go('voting_player');
       }
