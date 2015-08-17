@@ -24,7 +24,6 @@ angular.module("App")
 
 	// redirect to question_display
 	$scope.toNextDisplay = function() {
-		// if curr > 10, state to final result
 		if ($scope.currentRound >= 10) {
 			$state.go("final_result_display");
 		} else { // else display_question

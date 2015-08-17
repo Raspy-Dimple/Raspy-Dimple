@@ -18,10 +18,8 @@ angular.module('App')
       });
 
     $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
-      console.log("newVal", newVal);
       var serverLagCeil = 2;
       if(newVal === serverLagCeil) {
-        console.log("in equals of watch");
         $scope.submitPlayerAnswer();
       }
     });
@@ -32,7 +30,6 @@ angular.module('App')
     var intPlayerQuestionPromise = $interval(function() {
       $scope.curView = fireBaseFactory.getCurrentView();
       if ($scope.curView === 'voting'){
-        //console.log('Yaaaay');
         $interval.cancel(intPlayerQuestionPromise); // Destroy our interval, now that we no longer need it.
         $state.go('voting_player');
       }

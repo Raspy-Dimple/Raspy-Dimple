@@ -5,7 +5,6 @@ angular.module("App")
   var game = null;
   var playerKey = null;
   var TIME_LEFT = 10;
-  // var gameId = null;  might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
   
   // Generate a random string of 5 characters that we will use for our game ID's.
    var createGameID = function () {
@@ -16,7 +15,6 @@ angular.module("App")
         gameID += validChars.charAt(Math.floor(Math.random() * validChars.length));
       }
 
-      //console.log(gameID);
       return gameID;
   };
 
@@ -41,9 +39,7 @@ angular.module("App")
         10: "What is JARVIS's super power?"
       }
     };
-    //game = $firebaseObject(ref.push(gameObject));
     var gameID = createGameID();
-    // console.log('Game ID: ', gameID);
 
     // Instantiate a new game with our newly generated short code ID.
     // Note: If we don't utilize a short code, and instead use the FireBase "push" method,
@@ -61,7 +57,6 @@ angular.module("App")
     var id = id.toUpperCase();
     
     var newRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + id);
-    // gameId = id; might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
     playerKey = newRef.child("players").push({name: name, votes: 0}).key();
     game = $firebaseObject(newRef);
     return game;
@@ -77,7 +72,6 @@ angular.module("App")
     // Query our current game ID to find out if the game is in an active state.
     // This query method can be found here: https://www.firebase.com/blog/2013-10-01-queries-part-one.html#byid
     new Firebase("https://exposeyourself.firebaseio.com/games/" + id + "/active").once('value', function(data) {
-      console.log('DATA', data.val());
       activeGame = data.val();
     });
 
@@ -93,7 +87,6 @@ angular.module("App")
     // Query game to find out if the game is in an active state.
     // This query method can be found here: https://www.firebase.com/blog/2013-10-01-queries-part-one.html#byid
     new Firebase("https://exposeyourself.firebaseio.com/games/" + game.$id + "/currentView").once('value', function(data) {
-      console.log('DATA', data.val());
       curView = data.val();
     });
 
@@ -170,15 +163,6 @@ angular.module("App")
     var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
     ref.child('timeLeft').set(TIME_LEFT);
   };
-
-  // Might want if we want to listen for when a user is added rather than use setTimeOut in the createCtrl.js
-  // var playerAdded = function(cb){
-  //   var playersRef = new Firebase("https://exposeyourself.firebaseio.com/games/" + gameId + "/players");
-  //   playersRef.on('child_added', function(childSnapshot, prevChildKey) {
-  //     // code to handle new child.
-  //     cb(childSnapshot);
-  //   });
-  // };
 
   var addQuestions = function(callback) {
     var replaceName = function(string, replaceWith) {
@@ -275,6 +259,6 @@ angular.module("App")
     incrementRound: incrementRound,
     joinGame: joinGame,
     setJoin: setJoin,
-    updateCurrentView: updateCurrentView  
+    updateCurrentView: updateCurrentView
   };
 });
