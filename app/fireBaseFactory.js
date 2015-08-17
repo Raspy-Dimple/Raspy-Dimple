@@ -4,7 +4,7 @@ angular.module("App")
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
   var playerKey = null;
-  var TIME_LEFT = 10;
+  var TIME_LEFT = 30;
   
   // Generate a random string of 5 characters that we will use for our game ID's.
    var createGameID = function () {
@@ -183,15 +183,17 @@ angular.module("App")
       return questionsArray;
     };
     // get access to the names for the current game
-    var ref = new Firebase('https://exposeyourself.firebaseio.com/players');
+    var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id '/players');
     ref.once('value', function(players) {
-      var tempPlayers = ['Herbert','Alfred','Fitz'];
+      var tempPlayers = [];
+      console.log(players.val());
       angular.forEach(players.val(), function(player) {
         tempPlayers.push(player.name);
       });
       var ref = new Firebase('https://exposeyourself.firebaseio.com/questionDB');
       ref.once('value', function(questions) {
         var tempQuestions = [];
+        console.log(questions.val());
         angular.forEach(questions.val(), function(question) {
           tempQuestions.push(question.question);
         });
