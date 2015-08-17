@@ -35,7 +35,7 @@ angular.module('App')
 
     // navigate to new question or to final result
     $scope.toNextDisplay = function() {
-      if ($scope.currentRound >= 10) {
+      if ($scope.currentRound >= fireBaseFactory.getEndRound()) {
         $state.go('final_result_player');
       } else {
         $state.go('question_player');

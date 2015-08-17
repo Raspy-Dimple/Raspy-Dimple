@@ -5,6 +5,7 @@ angular.module("App")
   var game = null;
   var playerKey = null;
   var TIME_LEFT = 10;
+  var END_ROUND = 10;
   
   // Generate a random string of 5 characters that we will use for our game ID's.
    var createGameID = function () {
@@ -161,7 +162,11 @@ angular.module("App")
 
   var getGameTime = function() {
     return TIME_LEFT;
-  }
+  };
+
+  var getEndRound = function(){
+    return END_ROUND;
+  };
 
   var resetTimeLeft = function(){
     var ref = new Firebase('https://exposeyourself.firebaseio.com/games/' + game.$id);
@@ -182,7 +187,7 @@ angular.module("App")
         var random = Math.floor(Math.random()*(questionsArray.length-i))+i;
         var temp = questionsArray[i];
         questionsArray[i] =  questionsArray[random];
-        questionsArray[random] = temp;        
+        questionsArray[random] = temp;
       }
       return questionsArray;
     };
@@ -258,6 +263,7 @@ angular.module("App")
     getCurrentView: getCurrentView,
     getGame: getGame,
     getGameTime: getGameTime,
+    getEndRound: getEndRound,
     getPlayerKey: getPlayerKey,
     getPlayerAnswers: getPlayerAnswers,
     getPlayerNames: getPlayerNames,
