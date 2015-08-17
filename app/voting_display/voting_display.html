@@ -3,12 +3,14 @@
   <p id="current-round">Question {{ currentRound }}:</p>
   <p id="question-voting">{{question}}</p>
   
-  <p>Pick your favorite answer:</p>
-  <ul id="answers">
-    <li ng-repeat="answer in answers">
-      {{answer.response}}
-    </li>
-  </ul>
+  <p>Pick your favorite answer:</p> 
 
-  <p id="timer">{{timeLeft.$value}}</p>
+  <div class="answers">
+    <div ng-repeat="answer in answers">&bull; {{answer.response}}</div>
+  </div>
+
+  <div class="next_timer">
+    <span class="timer">{{timeLeft.$value}}</span>
+  </div>
+
 </div>

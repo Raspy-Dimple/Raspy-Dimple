@@ -17,7 +17,7 @@ body {
   background-color: #000;
   color: #fff;
   font-family: 'Sigmar One', cursive;
-  font-size: 5vh;
+  font-size: 5vmin;
 }
 
 .main-container {
@@ -47,6 +47,7 @@ button {
   line-height: .8;
   box-shadow: none;
   border-radius: 0;
+  background-color: #A0A0A0;
 }
 
 button:focus {
@@ -59,6 +60,7 @@ footer {
   text-align: center;
   position: fixed;
   width: 100%;
+  z-index: 10;
 }
 
 input {
@@ -66,7 +68,7 @@ input {
 }
 
 #go-button {
-  bottom: 20%;
+  bottom: 12%;
   margin: 0 auto 0 auto;
   text-align: center;
   position: absolute;
@@ -93,7 +95,7 @@ ol, ul {
 }
 
 #title {
-  font-size: 25vh;
+  font-size: 15vw;
   padding: 0;
 }
 
@@ -101,13 +103,13 @@ ol, ul {
    HOST: Create New Game view
  *******************************************/
 
-.create-host-view {          
+#create-host-view {          
   height: 50vh;
-  margin: 8vh 0 0 0;
+  margin: 4vh 0 0 0;
   text-align: center;
 }
 
-.create-host-view ul {
+/*.create-host-view ul {
   -moz-column-count: 2;
   -moz-column-gap: 2.5em;
   -webkit-column-count: 2;
@@ -118,7 +120,7 @@ ol, ul {
   padding: 10px;
   text-align: center;
   width: 75%;
-}
+}*/
 
 .create-host-view p {
   padding: 0;
@@ -126,9 +128,15 @@ ol, ul {
 
 #game-code {
   color: #0099FF;
-  font-size: 15vh;
-  margin: 0;
+  font-size: 15vmin;
   padding: 0;
+}
+
+.current-players {
+  color: #00FFFF;
+  width: 80%;
+  margin: 1vh auto 0 auto;
+  font-size: 3vh;
 }
 
 
@@ -136,10 +144,19 @@ ol, ul {
    Shared view elements between host and player
  *******************************************/
 
-#current-round {
-font-size: 5vh;
-padding: 0 0 50px 0;
+.current-round {
+padding: 0 0 5vh 0;
 text-align: left;
+}
+
+.next_timer {
+  position: absolute;
+  top: 8vh;
+  right: 12%;
+}
+
+.timer {
+  font-size: 5vh;
 }
 
 /*******************************************
@@ -152,20 +169,12 @@ margin: 8vh auto 0 auto;
 text-align: center;
 }
 
-.question-host-view #question {
-font-size: 10vh;
-line-height: 10vh;
-padding: 2vh;
-text-align: center;
+.question-host-view .question {
+font-size: 10vmin;
+line-height: 16vmin;
+color: #0099FF;
+margin-top: 5vh;
 }
-
-.question-host-view #timer {
-  bottom: 3%;
-  font-size: 3vh;
-  padding: 2vh;
-  position: absolute;
-  right: 5%;
- }
 
 /*******************************************
    Host Voting Display view
@@ -185,18 +194,20 @@ text-align: center;
 
 .voting-host-view #question-voting {
 font-size: 5vh;
-line-height: 5vh;
 padding: 2vh;
-text-align: center;
+color: aqua;
+line-height: 6vmin;
+margin-bottom: 3vh;
 }
 
-.voting-host-view #timer {
-  bottom: 3%;
-  font-size: 3vh;
-  padding: 2vh;
-  position: absolute;
-  right: 5%;
- }
+.voting-host-view #ans {
+text-align: center;
+margin-bottom: 2vh;
+}
+
+.voting-host-view .answers {
+color: #0099FF;
+}
 
 /*******************************************
    Host Result Display view
@@ -216,18 +227,62 @@ text-align: center;
 
 .results-host-view #question {
 font-size: 5vh;
-line-height: 5vh;
 padding: 2vh;
 text-align: center;
+color: #0099FF;
+line-height: 5vmin;
+margin-bottom: 3vh;
 }
 
-.results-host-view #timer {
-  bottom: 3%;
-  font-size: 3vh;
-  padding: 2vh;
-  position: absolute;
-  right: 5%;
- }
+.results-host-view table {
+  margin-top: 5vh;
+  margin-left: auto;
+  width: 100%
+}
+
+.results-host-view table tr:nth-child(odd) {
+  background-color: #0E1D27;
+}
+
+/*******************************************
+   Host Final Result view
+ *******************************************/
+
+.host-final-result-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
+text-align: center;
+width: 80%;
+}
+.host-final-result-view h1 {
+font-size: 8vmin;
+line-height: 8vmin;
+}
+
+.host-final-result-view .final-results {
+line-height: 10vmin;
+color: aqua;
+margin-top: 7vh;
+margin-bottom: 7vh;
+}
+
+/*******************************************
+   Player: Join view
+ *******************************************/
+
+#join-view {          
+   margin: 10vh 0 0 0;
+   text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+}
+
+#join-button {
+  margin-top: 30px;
+}
 
 /*******************************************
    Player Question view
@@ -240,14 +295,91 @@ text-align: center;
 width: 80%;
 }
 
-.question-player-view #current-round {
+.question-player-view .current-round {
 font-size: 5vh;
-text-align: left;
 }
 
-.question-player-view #question {
-font-size: 10vh;
-line-height: 10vh;
+.question-player-view .question {
+font-size: 5vh;
+line-height: 6vh;
+color: #0099FF;
 padding: 2vh;
+}
+
+.question-player-view button {
+  margin-top: 30px;
+}
+
+.question-player-view .wait {
+  margin-top: 100px;
+}
+
+/*******************************************
+   Player Voting view
+ *******************************************/
+
+.voting-player-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
 text-align: center;
+width: 80%;
+}
+
+.voting-player-view .question {
+line-height: 6vh;
+padding: 2vh;
+color: aqua;
+}
+
+.voting-player-view .answers {
+line-height: 7vh;
+color: #0099FF;
+margin-top: 1vh;
+}
+
+.voting-player-view .wait {
+  margin-top: 100px;
+}
+
+/*******************************************
+   Player Result view
+ *******************************************/
+
+.result-player-view {
+height: 50vh;
+margin: 8vh auto 0 auto;
+text-align: center;
+width: 80%;
+}
+.result-player-view h1 {
+font-size: 8vmin;
+line-height: 8vmin;
+}
+
+.result-player-view .question {
+line-height: 6vmin;
+padding: 2vh;
+color: aqua;
+}
+
+.result-player-view .results {
+line-height: 7vmin;
+color: #0099FF;
+margin-top: 1vh;
+margin-bottom: 1vh;
+}
+
+/*******************************************
+   Player Final Result view
+ *******************************************/
+
+.player-final-result-view {          
+   height: 50vh;
+   margin: 20vh 0 0 0;
+   text-align: center;
+}
+  
+.player-final-result-view .verdict {
+  font-size: 20vmin;
+  padding: 0;
 }

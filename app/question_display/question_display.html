@@ -1,6 +1,10 @@
 <div class="host question-host-view" ng-controller="question_displayCtrl">
 
-  <p id="current-round">Question {{ currentRound }}:</p>
-  <p id="question">{{question}}</p>
-  <p id="timer">{{timeLeft.$value}}</p>
+  <p class="current-round">Question {{currentRound}}:</p>
+  
+  <p class="question">{{question}}</p>
+
+	<div class="next_timer">
+	  <span id="timer">{{timeLeft.$value}}</span>
+	</div>
 </div>

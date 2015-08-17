@@ -1,23 +1,20 @@
-<p> Current Round: {{ currentRound }} </p>
+<div class="result-player-view">
+	<p> Current Round: {{ currentRound }} </p>
 
-<h1>VOTING RESULTS!</h1>
+	<h1>VOTING RESULTS!</h1>
 
-<p>{{question}}</p>
+	<p class="question">{{question}}</p>
 
-<p>RESULTS</p>
+	<p>{{timeLeft.$value}}</p>
 
-<ul>
-  <li ng-repeat="answer in answers | orderBy:'-votes'">
-    {{getPlayerName(answer.playerKey)}}: {{answer.response}} : {{answer.votes}} Votes
-  </li>
-</ul>
-
-{{timeLeft.$value}}
-
-<!-- replaced Temporary Button -->
-<input type="submit" value="Next" ng-click="toNextDisplay()">
-<p>Get ready for next round!</p>
-
+	<div class="results">
+	  <div ng-repeat="answer in answers | orderBy:'-votes'">
+	    &bull; {{getPlayerName(answer.playerKey)}} {{answer.votes}} Votes:
+	    {{answer.response}}
+	  </div>
+	</div>
+	<p>Get ready for next round!</p>
+</div>
 <!-- Temporary Button to move us to the next round. -->
 <!--
 <p><a ui-sref='question_player'>NEXT ROUND!</a></p>

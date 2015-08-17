@@ -5,11 +5,11 @@
   <p id="game-code">{{code}}</p>
 
   <p>Current players:</p>
-  <ul>
-    <li ng-repeat="player in players">
-      <span>{{player.name}}</span>
-    </li>
-  </ul>
+  <div class="current-players">
+    <span ng-repeat="player in players">
+      | {{player.name}}
+    </span>
+  </div>
   <p id="go-button">
     <a ng-click="toQuestionDisplay()" href="#">→ → → GO! ← ← ←</a>
   </p>
