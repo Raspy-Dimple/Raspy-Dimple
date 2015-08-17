@@ -185,7 +185,7 @@ angular.module("App")
     // get access to the names for the current game
     var ref = new Firebase('https://exposeyourself.firebaseio.com/players');
     ref.once('value', function(players) {
-      var tempPlayers = ['jeff','tim','kate'];
+      var tempPlayers = ['Herbert','Alfred','Fitz'];
       angular.forEach(players.val(), function(player) {
         tempPlayers.push(player.name);
       });

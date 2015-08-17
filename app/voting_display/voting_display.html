@@ -1,8 +1,9 @@
 <div class="host voting-host-view">
 	
   <p id="current-round">Question {{ currentRound }}:</p>
-  <p id="question">{{question}}</p>
+  <p id="question-voting">{{question}}</p>
   
+  <p>Pick your favorite answer:</p>
   <ul id="answers">
     <li ng-repeat="answer in answers">
       {{answer.response}}

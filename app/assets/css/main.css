@@ -171,15 +171,21 @@ text-align: center;
    Host Voting Display view
  *******************************************/
 
+.voting-host-view #current-round {
+font-size: 5vh;
+padding: 0 0 25px 0;
+text-align: left;
+}
+
 .voting-host-view {
 height: 50vh;
 margin: 8vh auto 0 auto;
 text-align: center;
 }
 
-.voting-host-view #question {
-font-size: 10vh;
-line-height: 10vh;
+.voting-host-view #question-voting {
+font-size: 5vh;
+line-height: 5vh;
 padding: 2vh;
 text-align: center;
 }
@@ -196,6 +202,12 @@ text-align: center;
    Host Result Display view
  *******************************************/
 
+.voting-host-view #current-round {
+font-size: 5vh;
+padding: 0 0 25px 0;
+text-align: left;
+}
+
 .results-host-view {
 height: 50vh;
 margin: 8vh auto 0 auto;
@@ -203,8 +215,8 @@ text-align: center;
 }
 
 .results-host-view #question {
-font-size: 10vh;
-line-height: 10vh;
+font-size: 5vh;
+line-height: 5vh;
 padding: 2vh;
 text-align: center;
 }

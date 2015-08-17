@@ -13,14 +13,19 @@ angular.module("App")
   // Setup as an empty array, since we'll need to iterate over our game object.
   $scope.players = fireBaseFactory.getPlayerNames();
 
-  $scope.toQuestionDisplay = function(){
-    fireBaseFactory.setJoin(false, game.$id);// no more people can join the game
+  $scope.keyPress = function($event){
+    console.log('test');
+    if($event.which === 39){
+      alert('right!'); 
+    }
 
-    // Added a callback parameter for the addQuestion method in the factory.
-    // This will not trigger the state change until we've added 10 questions to the database.
-    fireBaseFactory.addQuestions(function() {
-      $state.go("question_display"); // navigate to the question display page
-    });
+    // fireBaseFactory.setJoin(false, game.$id);// no more people can join the game
+
+    // // Added a callback parameter for the addQuestion method in the factory.
+    // // This will not trigger the state change until we've added 10 questions to the database.
+    // fireBaseFactory.addQuestions(function() {
+    //   $state.go("question_display"); // navigate to the question display page
+    // });
   };
 
 }]);
