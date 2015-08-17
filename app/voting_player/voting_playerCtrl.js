@@ -24,11 +24,11 @@ angular.module('App')
     // Store interval promise so that we can destroy it once we're done.
     var intPlayerVotingPromise = $interval(function() {
       $scope.curView = fireBaseFactory.getCurrentView();
-      if ($scope.curView === 'results'){
+      if ($scope.curView !== 'voting'){
         $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
         $state.go('result_player');
       }
-    },500,0);
+    },100,0);
 
     
     $scope.$watch('timeLeft.$value', function(newVal, oldVal) {

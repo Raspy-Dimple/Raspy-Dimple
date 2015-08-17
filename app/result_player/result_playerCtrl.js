@@ -21,11 +21,11 @@ angular.module('App')
 
     var intPlayerVotingPromise = $interval(function() {
       $scope.curView = fireBaseFactory.getCurrentView();
-      if ($scope.curView === 'nextDisplay'){
+      if ($scope.curView !== 'results'){
         $interval.cancel(intPlayerVotingPromise); // Destroy our interval, now that we no longer need it.
         $scope.toNextDisplay();
       }
-    },500,0);
+    },100,0);
 
     // ensure we watch for any change in value so it reupdates on screen
     $scope.$watch('timeLeft.$value', function(newVal, oldVal) {
