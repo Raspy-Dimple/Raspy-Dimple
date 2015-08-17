@@ -1,20 +1,30 @@
-<div id="voting-player-view">
+<div class="voting-player-view">
   <div ng-show="!holdView">
     <p> Current Round: {{ currentRound }} </p>
-    <p>{{question}}</p>
+    <!-- <p> Current Round: 2 </p> -->
+
+    <p class="question">{{question}}</p>
+    <!-- <p id="question">What did JARVIS's parents say to them when they were born?</p> -->
 
     <p>Pick your favorite answer!!!</p>
 
-    <ul>
+   <!--  <ul>
       <li ng-repeat="answer in answers | filter:filterPlayer" ng-click="chooseAnswer(answer.playerKey)" >
         {{answer.response}}
       </li>
-    </ul>
+    </ul> -->
+
+    <div class="answers">
+      <div ng-repeat="answer in answers | filter:filterPlayer" ng-click="chooseAnswer(answer.playerKey)">
+       &bull; {{answer.response}}
+      </div>
+    </div>
+
+    <span class="timer">{{timeLeft.$value}}</span>
+    <!-- <span class="timer">10</span> -->
   </div>
 
-  {{timeLeft.$value}}
-
-  <div ng-show="holdView">
-    Waiting for other players to vote . . .
-  </div>
+    <div class="wait" ng-show="holdView">
+      Waiting for other players to vote . . .
+    </div>
 </div>
