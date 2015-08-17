@@ -189,7 +189,6 @@ angular.module("App")
       var tempPlayers = [];
       console.log(players.val());
       angular.forEach(players.val(), function(player) {
-        console.log("player === ", player);
         tempPlayers.push(player.name);
       });
       var ref = new Firebase('https://exposeyourself.firebaseio.com/questionDB');
