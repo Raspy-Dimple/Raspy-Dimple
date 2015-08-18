@@ -33,4 +33,8 @@ angular.module("App")
 			$state.go("question_display");
 		}
 	};
+
+	$scope.getPlayerName = function(playerKey) {
+	  return playerList[playerKey].name;
+	};
 });

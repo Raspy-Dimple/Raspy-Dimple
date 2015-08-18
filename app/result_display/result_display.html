@@ -15,7 +15,7 @@
 
 	<div class="results">
 	  <div ng-repeat="answer in answers | orderBy:'-votes'">
-	    &bull; {{getPlayerName(answer.playerKey)}} {{answer.votes}} Votes:
+	    &bull; {{getPlayerName(answer.playerKey)}}- {{answer.votes}} Votes:
 	    {{answer.response}}
 	  </div>
 	</div>
