@@ -4,7 +4,7 @@ angular.module("App")
   var ref = new Firebase("https://exposeyourself.firebaseio.com/games");
   var game = null;
   var playerKey = null;
-  var TIME_LEFT = 10;
+  var TIME_LEFT = 15;
   var END_ROUND = 10;
   
   // Generate a random string of 5 characters that we will use for our game ID's.
