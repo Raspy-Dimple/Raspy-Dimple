@@ -7,12 +7,24 @@
 
 	<p>{{timeLeft.$value}}</p>
 
-	<div class="results">
+	<!-- <div class="results">
 	  <div ng-repeat="answer in answers | orderBy:'-votes'">
 	    &bull; {{getPlayerName(answer.playerKey)}} {{answer.votes}} Votes:
 	    {{answer.response}}
 	  </div>
-	</div>
+	</div> -->
+
+	<table>
+		<tr>
+			<th>Name</th><th>Round</th><th>Total</th>
+		</tr>
+		<tr ng-repeat="answer in answers">
+			<td>{{ players[answer.playerKey].name }}</td>
+			<td>{{ answer.votes }}</td>
+			<td>{{ players[answer.playerKey].votes }}</td>
+		</tr>
+	</table>
+
 	<p>Get ready for next round!</p>
 </div>
 <!-- Temporary Button to move us to the next round. -->

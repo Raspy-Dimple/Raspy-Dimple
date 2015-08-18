@@ -11,13 +11,9 @@ angular.module('App')
         $scope.question = data.questions[data.currentRound];
         // get current round
         $scope.currentRound = data.currentRound;
-        playerList = data.players;
+        $scope.players = data.players;
         $scope.timeLeft = fireBaseFactory.getTimeLeft();
       });
-
-    $scope.getPlayerName = function(playerKey) {
-      return playerList[playerKey].name;
-    };
 
     var intPlayerVotingPromise = $interval(function() {
       $scope.curView = fireBaseFactory.getCurrentView();

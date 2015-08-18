@@ -234,7 +234,7 @@ line-height: 5vmin;
 margin-bottom: 3vh;
 }
 
-.results-host-view table {
+/*.results-host-view table {
   margin-top: 5vh;
   margin-left: auto;
   width: 100%
@@ -242,6 +242,13 @@ margin-bottom: 3vh;
 
 .results-host-view table tr:nth-child(odd) {
   background-color: #0E1D27;
+}*/
+
+.results-host-view .results {
+line-height: 7vmin;
+color: #0099FF;
+margin-top: 1vh;
+margin-bottom: 1vh;
 }
 
 /*******************************************
@@ -362,11 +369,22 @@ padding: 2vh;
 color: aqua;
 }
 
-.result-player-view .results {
+/*.result-player-view .results {
 line-height: 7vmin;
 color: #0099FF;
 margin-top: 1vh;
 margin-bottom: 1vh;
+}*/
+
+.result-player-view table {
+  margin-top: 5vh;
+  margin-left: auto;
+  width: 100%;
+  margin-bottom: 4vh;
+}
+
+.result-player-view table tr:nth-child(odd) {
+  background-color: #0E1D27;
 }
 
 /*******************************************
