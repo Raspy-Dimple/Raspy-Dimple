@@ -22,6 +22,16 @@ angular.module("App")
     }
   },1000, fireBaseFactory.getGameTime());
 
+  // I think we need this to populate our answers.
+  setInterval(function() {
+    game = fireBaseFactory.getGame();
+    game.$loaded()
+        .then(function(data) {
+          $scope.answers = data.answers;
+          $scope.$apply();
+        })
+    }, 1500);
+
   $scope.toResultDisplay = function() {
     fireBaseFactory.updateCurrentView('results');
     $state.go("result_display");
