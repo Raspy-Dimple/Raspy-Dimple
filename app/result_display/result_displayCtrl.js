@@ -1,13 +1,13 @@
 angular.module("App")
 .controller("result_displayCtrl", function($scope, $state, $interval, fireBaseFactory) {
-
+	var playerList = {};
   $scope.answers = fireBaseFactory.getPlayerAnswers();
 
 	var game = fireBaseFactory.getGame();
 	game.$loaded().then(function(data) {
 		$scope.currentRound = data.currentRound;
 		$scope.question = data.questions[data.currentRound];
-		$scope.players = data.players;
+		playerList = data.players;
 	});
 
 	fireBaseFactory.getTimeLeft().$bindTo($scope,'timeLeft');

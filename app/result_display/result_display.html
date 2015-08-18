@@ -2,7 +2,7 @@
 
   <p class="current-round">Question {{ currentRound }}:</p>
 
-	<table>
+	<!-- <table>
 		<tr>
 			<th>Name</th><th>Round</th><th>Total</th>
 		</tr>
@@ -11,7 +11,14 @@
 			<td>{{ answer.votes }}</td>
 			<td>{{ players[answer.playerKey].votes }}</td>
 		</tr>
-	</table>
+	</table> -->
+
+	<div class="results">
+	  <div ng-repeat="answer in answers | orderBy:'-votes'">
+	    &bull; {{getPlayerName(answer.playerKey)}} {{answer.votes}} Votes:
+	    {{answer.response}}
+	  </div>
+	</div>
 
   <div class="next_timer">
     <span class="timer">{{timeLeft.$value}}</span>
