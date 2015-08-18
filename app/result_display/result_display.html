@@ -2,20 +2,12 @@
 
   <p class="current-round">Question {{ currentRound }}:</p>
 
-	<!-- <table>
-		<tr>
-			<th>Name</th><th>Round</th><th>Total</th>
-		</tr>
-		<tr ng-repeat="answer in answers">
-			<td>{{ players[answer.playerKey].name }}</td>
-			<td>{{ answer.votes }}</td>
-			<td>{{ players[answer.playerKey].votes }}</td>
-		</tr>
-	</table> -->
+  <h1>VOTING RESULTS!</h1>
 
 	<div class="results">
-	  <div ng-repeat="answer in answers | orderBy:'-votes'">
-	    &bull; {{getPlayerName(answer.playerKey)}}- {{answer.votes}} Votes:
+	  <div class="each" ng-repeat="answer in answers | orderBy:'-votes'">
+	    &bull; {{getPlayerName(answer.playerKey)}}: {{answer.votes}} Votes
+	    <br>
 	    {{answer.response}}
 	  </div>
 	</div>

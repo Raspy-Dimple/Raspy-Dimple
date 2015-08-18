@@ -234,21 +234,19 @@ line-height: 5vmin;
 margin-bottom: 3vh;
 }
 
-/*.results-host-view table {
-  margin-top: 5vh;
-  margin-left: auto;
-  width: 100%
+.results-host-view h1 {
+font-size: 8vmin;
+line-height: 8vmin;
 }
 
-.results-host-view table tr:nth-child(odd) {
-  background-color: #0E1D27;
-}*/
-
 .results-host-view .results {
-line-height: 7vmin;
-color: #0099FF;
-margin-top: 1vh;
-margin-bottom: 1vh;
+margin-top: 4vmin;
+line-height: 5vmin;
+color: aqua;
+}
+
+.results-host-view .each {
+margin-bottom: 6vh;
 }
 
 /*******************************************
